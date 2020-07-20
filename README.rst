@@ -1,4 +1,4 @@
-.. image:: http://c1.staticflickr.com/5/4757/26625486258_41ea6d95e0.jpg
+.. image:: https://live.staticflickr.com/65535/50133334861_428d437c2c_o_d.png
     :align: center
 
 --------------
