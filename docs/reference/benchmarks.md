@@ -1,0 +1,3 @@
+# Benchmarks Module
+
+<!--::: NiaPy.benchmarks-->

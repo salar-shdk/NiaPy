@@ -13,3 +13,4 @@ __project__ = "NiaPy"
 __version__ = "2.0.0rc12"
 
 VERSION = "{0} v{1}".format(__project__, __version__)
+"""str: Full project name and version."""

@@ -1,0 +1,119 @@
+site_name: NiaPy
+site_description: NiaPy is Python micro-framework for building nature-inspired algorithms.
+site_url: http://127.0.0.1:8000/
+repo_name: NiaOrg/NiaPy
+repo_url: https://github.com/NiaOrg/NiaPy
+nav:
+  - Home: index.md
+  - Introduction: introduction.md
+  - Quickstart: quickstart.md
+  - User guide:
+    - Solve fist problem: user_guide/solve_first_problem.md
+    - Define custom problem: user_guide/define_first_problem.md
+    - Minimization/maximization problem: user_guide/min_max_problem.md
+    - Using different stopping criteria: user_guide/different_stopping_criteria.md
+    - Running multiple algorithms agains multiple problems: user_guide/runner.md
+  - NiaPy API reference:
+    - "__init__": reference/index.md
+    - Runner: reference/runner.md
+    - Algorithms:
+        - Algorithm: reference/algorithms/algorithm.md
+        - Basic: reference/algorithms/basic.md
+        - Modified: reference/algorithms/modified.md
+        - Other: reference/algorithms/other.md
+        - Statistics: reference/algorithms/statistics.md
+        - Utility: reference/algorithms/utility.md
+    - Benchmarks: reference/benchmarks.md
+    - Task:
+        - Task: reference/task/task.md
+        - Utility: reference/task/utility.md
+    - Util:
+        - Argparser: reference/util/argparser.md
+        - Exception: reference/util/exception.md
+        - Utility: reference/util/utility.md
+  - Developer guide - Contributing:
+    - Contribute to NiaPy: developer_guide/contributing.md
+    - Development environment: developer_guide/development_environment.md
+    - Using Git: developer_guide/git_begginers.md
+    - Testing: developer_guide/testing.md
+  - Get help: support.md
+  - Release notes: changelog.md
+  - Code of conduct: code_of_conduct.md
+  - Credits: credits.md
+theme:
+    name: material
+    custom_dir: docs/niapy_theme
+    language: en
+    logo: images/NiaPyLogo.png
+    palette:
+      primary: green
+      accent: light green
+extra_css:
+  - css/custom.css
+  - css/termynal.css
+extra_javascript:
+  - js/termynal.js
+  - js/custom.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
+extra:
+  version: 2.0.0rc12
+plugins:
+  - search
+  - progress
+  - mkdocstrings:
+      handlers:
+        python:
+          rendering:
+            show_root_heading: no
+            show_root_toc_entry: yes
+            show_root_full_path: yes
+            show_object_full_path: no
+            show_category_heading: no
+            show_if_no_docstring: yes
+            show_source: no
+            group_by_category: yes
+            heading_level: 2
+          selection:
+            docstring_style: google
+            filters:
+              - "!^__all__$"
+              - "!^logger$"
+            docstring_options:
+              replace_admonitions: yes
+      watch:
+        - NiaPy/
+      custom_templates: docs/niapy_templates
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.inlinehilite:
+      custom_inline:
+        - name: math
+          class: arithmatex
+          format: !!python/name:pymdownx.arithmatex.inline_mathjax_format
+  - pymdownx.magiclink:
+      repo_url_shortener: yes
+      social_url_shorthand: yes
+      provider: 'github'
+      user: 'NiaOrg'
+      repo: 'NiaPy'
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: math
+          class: arithmatex
+          format: !!python/name:pymdownx.arithmatex.fence_mathjax_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
