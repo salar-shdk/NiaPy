@@ -91,5 +91,3 @@ class Perm(Benchmark):
 				v += vv ** 2
 			return v
 		return f
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

@@ -22,5 +22,3 @@ class TSTestCase(AlgorithmTestCase):
 		ts_griewank = self.algo(NP=10, D=self.D, nFES=self.nFES, nGEN=self.nGEN, seed=self.seed)
 		ts_griewankc = self.algo(NP=10, D=self.D, nFES=self.nFES, nGEN=self.nGEN, seed=self.seed)
 		AlgorithmTestCase.test_algorithm_run(self, ts_griewank, ts_griewankc)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

@@ -14,7 +14,7 @@ class Utility:
     """
 
     def __init__(self):
-        r"""Initialize benchmarks."""
+        r"""Initialize the benchmark utility."""
 
         self.benchmark_classes = {
             "ackley": benchmarks.Ackley,
