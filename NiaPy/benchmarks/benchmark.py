@@ -21,7 +21,8 @@ class Benchmark:
 	"""List[str]: List of names representiong benchmark names."""
 
 	def __init__(self, Lower, Upper, **kwargs):
-		r"""Initialize benchmark.
+		r"""
+		Initialize benchmark.
 
 		Arguments:
 			Lower (Union[int, float, list, numpy.ndarray]): Lower bounds.
@@ -32,7 +33,8 @@ class Benchmark:
 
 	@staticmethod
 	def latex_code():
-		r"""Return the latex code of the problem.
+		r"""
+		Return the latex code of the problem.
 
 		Returns:
 			str: Latex code
@@ -40,13 +42,15 @@ class Benchmark:
 		return r'''$f(x) = \infty$'''
 
 	def function(self):
-		r"""Get the optimization function.
+		r"""
+		Get the optimization function.
 
 		Returns:
 			Callable[[int, Union[list, numpy.ndarray]], float]: Fitness funciton.
 		"""
 		def fun(D, X):
-			r"""Initialize benchmark.
+			r"""
+			Initialize benchmark.
 
 			Args:
 				D (int): Dimesionality of the problem.
@@ -59,7 +63,8 @@ class Benchmark:
 		return fun
 
 	def __call__(self):
-		r"""Get the optimization function.
+		r"""
+		Get the optimization function.
 
 		Returns:
 			Callable[[int, Union[list, numpy.ndarray]], float]: Fitness funciton.
@@ -71,7 +76,8 @@ class Benchmark:
 		pass
 
 	def __2dfun(self, x, y, f):
-		r"""Calculate function value.
+		r"""
+		Calculate function value.
 
 		Args:
 			x (float): First coordinate.
