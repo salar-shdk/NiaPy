@@ -1,4 +1,4 @@
-"""Implementation of other algorithms."""
+"""Implementation of other nature-inspired algorithms."""
 
 from NiaPy.algorithms.other.nmm import NelderMeadMethod
 from NiaPy.algorithms.other.hc import HillClimbAlgorithm

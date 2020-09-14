@@ -1,0 +1,63 @@
+.md-header {
+    height: 3.0rem;
+}
+
+.md-header-nav__button {
+    padding: .7rem;
+}
+
+.md-header-nav__title {
+    line-height: 3.0rem;
+}
+
+.md-nav__title .md-nav__button.md-logo img,
+.md-header-nav__button.md-logo img, .md-header-nav__button.md-logo svg {
+    display: block;
+    width: unset;
+    height: 2rem;
+    fill: currentColor;
+}
+
+@media screen and (min-width: 60em) {
+    .md-search {
+        padding: .5rem 0;
+    }
+
+    .md-header-nav__source {
+        padding: .3rem 0;
+    }
+}
+
+a[data-terminal-control] {
+    text-align: right;
+    display: block;
+}
+
+/* mkdocstring */
+h2.doc-heading {
+  background: rgba(68,138,255,.1);
+  border-top: .2rem solid #448aff;
+  scroll-margin-top: 2em !important;
+}
+
+h3.doc-heading {
+  background: rgba(68,138,255,.1);
+  border-top: .15rem solid #448aff;
+  scroll-margin-top: 1.5em !important;
+}
+
+.md-typeset code {
+  color: hsl(200, 16%, 22%);
+}
+
+.md-typeset h2 {
+  font-size: 1.0rem;
+}
+
+.md-typeset h3 {
+  font-size: .9rem;
+}
+
+.md-typeset table:not([class]) td {
+  vertical-align: middle;
+}
