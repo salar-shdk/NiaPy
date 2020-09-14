@@ -9,7 +9,8 @@ from NiaPy.algorithms import other as other_algorithms
 
 
 class AlgorithmUtility:
-    r"""Base class with string mappings to algorithms.
+    r"""
+    Base class with string mappings to algorithms.
 
     !!! example
 
