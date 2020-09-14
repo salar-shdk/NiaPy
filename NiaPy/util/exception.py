@@ -4,7 +4,8 @@
 
 
 class FesException(Exception):
-    r"""Exception for exceeding number of maximum function evaluations.
+    r"""
+    Exception for exceeding number of maximum function evaluations.
 
     Author: Klemen Berkovič
 
@@ -14,7 +15,8 @@ class FesException(Exception):
     """
 
     def __init__(self, message='Reached the allowed number of the function evaluations!!!'):
-        r"""Initialize the exception.
+        r"""
+        Initialize the exception.
 
         Args:
                 message (Optional[str]): Message show when this exception is thrown
@@ -75,7 +77,8 @@ class RefException(Exception):
     """
 
     def __init__(self, message='Reached the reference point!!!'):
-        r"""Initialize the exception.
+        r"""
+        Initialize the exception.
 
         Args:
                 message (Optional[str]): Message that is show when this exception is thrown.
