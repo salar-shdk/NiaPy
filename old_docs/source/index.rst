@@ -40,7 +40,6 @@ The main documentation is organized into a couple sections:
 .. _about-docs:
 
 .. toctree::
-   :maxdepth: 3
    :caption: General
 
    about
@@ -52,16 +51,15 @@ The main documentation is organized into a couple sections:
 .. _user-docs:
 
 .. toctree::
-   :maxdepth: 3
    :caption: User Documentation
 
+   tutorials/index
    getting_started
    support
 
 .. _dev-docs:
 
 .. toctree::
-   :maxdepth: 3
    :caption: Developer Documentation
 
    guides/index

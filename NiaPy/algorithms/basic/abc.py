@@ -21,8 +21,8 @@ class SolutionABC(Individual):
 	Author:
 		Klemen Berkovič
 
-	See Also:
-		* :class:`NiaPy.algorithms.Individual`
+	Note
+		See also the `NiaPy.algorithms.Individual`
 	"""
 	def __init__(self, **kargs):
 		r"""Initialize individual.
@@ -32,6 +32,8 @@ class SolutionABC(Individual):
 
 		See Also:
 			* :func:`NiaPy.algorithms.Individual.__init__`
+
+
 		"""
 		Individual.__init__(self, **kargs)
 
@@ -192,5 +194,3 @@ class ArtificialBeeColonyAlgorithm(Algorithm):
 			Foods[mi], Trial[mi] = SolutionABC(task=task, rnd=self.Rand), 0
 			if Foods[mi].f < fxb: xb, fxb = Foods[mi].x.copy(), Foods[mi].f
 		return Foods, asarray([f.f for f in Foods]), xb, fxb, {'Probs': Probs, 'Trial': Trial}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

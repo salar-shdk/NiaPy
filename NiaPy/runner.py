@@ -1,6 +1,6 @@
 # encoding=utf8
 
-"""Implementation of Runner utility class."""
+"""Implementation of Runner module."""
 
 from __future__ import print_function
 
@@ -21,34 +21,64 @@ __all__ = ["Runner"]
 
 
 class Runner:
-    r"""Runner utility feature.
+    r"""
+    Runner utility feature class.
 
     Feature which enables running multiple algorithms with multiple benchmarks.
     It also support exporting results in various formats (e.g. Pandas DataFrame, JSON, Excel)
 
-    Attributes:
-            D (int): Dimension of problem
-            NP (int): Population size
-            nFES (int): Number of function evaluations
-            nRuns (int): Number of repetitions
-            useAlgorithms (Union[List[str], List[Algorithm]]): List of algorithms to run
-            useBenchmarks (Union[List[str], List[Benchmark]]): List of benchmarks to run
+    !!!example
+        ```python
+        from NiaPy import Runner
+        from NiaPy.algorithms.basic import (
+            GreyWolfOptimizer,
+            ParticleSwarmAlgorithm
+        )
+        from NiaPy.benchmarks import (
+            Benchmark,
+            Ackley,
+            Griewank,
+            Sphere,
+            HappyCat
+        )
 
-    Returns:
-            results (Dict[str, Dict]): Returns the results.
+        # Initialize Runner with multiple algorithms and/or benchmark functions
+        runner = Runner(
+            D=40,
+            nFES=100,
+            nRuns=2,
+            useAlgorithms=[
+                GreyWolfOptimizer(),
+                "FlowerPollinationAlgorithm",
+                ParticleSwarmAlgorithm(),
+                "HybridBatAlgorithm",
+                "SimulatedAnnealing",
+                "CuckooSearch"
+            ],
+            useBenchmarks=[
+                Ackley(),
+                Griewank(),
+                Sphere(),
+                HappyCat(),
+                "rastrigin"
+            ]
+        )
 
+        # Run the Runner with export option set to export results to Pandas DataFrame
+        runner.run(export='dataframe', verbose=True)
+
+        ```
     """
 
     def __init__(self, D=10, nFES=1000000, nRuns=1, useAlgorithms='ArtificialBeeColonyAlgorithm', useBenchmarks='Ackley', **kwargs):
         r"""Initialize Runner.
 
         Args:
-                D (int): Dimension of problem
-                nFES (int): Number of function evaluations
-                nRuns (int): Number of repetitions
-                useAlgorithms (List[Algorithm]): List of algorithms to run
-                useBenchmarks (List[Benchmarks]): List of benchmarks to run
-
+            D (int): Dimension of problem
+            nFES (int): Number of function evaluations
+            nRuns (int): Number of repetitions
+            useAlgorithms (List[Algorithm]): List of algorithms to run
+            useBenchmarks (List[Benchmarks]): List of benchmarks to run
         """
 
         self.D = D
@@ -62,10 +92,10 @@ class Runner:
         r"""Create optimization task.
 
         Args:
-                name (str): Benchmark name.
+            name (str): Benchmark name.
 
         Returns:
-                Task: Optimization task to use.
+            Task: Optimization task to use.
 
         """
         return StoppingTask(D=self.D, nFES=self.nFES, optType=OptimizationType.MINIMIZATION, benchmark=name)
@@ -81,10 +111,10 @@ class Runner:
         r"""Generate export file name.
 
         Args:
-                extension (str): File format.
+            extension (str): File format.
 
         Returns:
-
+            str: Generated export name with postfix based on the passed extension.
         """
 
         Runner.__create_export_dir()
@@ -93,9 +123,9 @@ class Runner:
     def __export_to_dataframe_pickle(self):
         r"""Export the results in the pandas dataframe pickle.
 
-        See Also:
-                * :func:`NiaPy.Runner.__createExportDir`
-                * :func:`NiaPy.Runner.__generateExportName`
+        Note: See Also
+            * [`__createExportDir`](#NiaPy.runner.Runner._Runner__create_export_dir)
+            * [__generateExportName](#NiaPy.runner.Runner._Runner__generate_export_name)
 
         """
 
@@ -106,9 +136,9 @@ class Runner:
     def __export_to_json(self):
         r"""Export the results in the JSON file.
 
-        See Also:
-                * :func:`NiaPy.Runner.__createExportDir`
-                * :func:`NiaPy.Runner.__generateExportName`
+        Note: See Also
+            * [__createExportDir](#NiaPy.runner.Runner._Runner__create_export_dir)
+            * [__generateExportName](#NiaPy.runner.Runner._Runner__generate_export_name)
 
         """
 
@@ -119,9 +149,9 @@ class Runner:
     def _export_to_xls(self):
         r"""Export the results in the xls file.
 
-        See Also:
-                * :func:`NiaPy.Runner.__createExportDir`
-                * :func:`NiaPy.Runner.__generateExportName`
+        Note: See Also
+            * [__createExportDir](#NiaPy.runner.Runner._Runner__create_export_dir)
+            * [__generateExportName](#NiaPy.runner.Runner._Runner__generate_export_name)
 
         """
 
@@ -132,9 +162,9 @@ class Runner:
     def __export_to_xlsx(self):
         r"""Export the results in the xlsx file.
 
-        See Also:
-                * :func:`NiaPy.Runner.__createExportDir`
-                * :func:`NiaPy.Runner.__generateExportName`
+        Note: See Also
+            * [__createExportDir](#NiaPy.runner.Runner._Runner__create_export_dir)
+            * [__generateExportName](#NiaPy.runner.Runner._Runner__generate_export_name)
 
         """
 
@@ -143,23 +173,21 @@ class Runner:
         logger.info("Export to XLSX file completed!")
 
     def run(self, export="dataframe", verbose=False):
-        """Execute runner.
+        """
+        Execute runner.
 
         Arguments:
-                export (str): Takes export type (e.g. dataframe, json, xls, xlsx) (default: "dataframe")
-                verbose (bool): Switch for verbose logging (default: {False})
+            export (str): Takes export type (e.g. dataframe, json, xls, xlsx)
+            verbose (bool): Switch for verbose logging (default: {False})
 
         Raises:
-                TypeError: Raises TypeError if export type is not supported
+            TypeError: Raises TypeError if export type is not supported
 
         Returns:
-                dict: Returns dictionary of results
+            results (Dict[str, Dict]): Returns the results.
 
-        See Also:
-                * :func:`NiaPy.Runner.useAlgorithms`
-                * :func:`NiaPy.Runner.useBenchmarks`
-                * :func:`NiaPy.Runner.__algorithmFactory`
-
+        Note: See Also
+            * [benchmark_factory](#NiaPy.runner.Runner.benchmark_factory)
         """
 
         for alg in self.useAlgorithms:

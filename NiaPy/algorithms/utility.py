@@ -1,4 +1,7 @@
 # encoding=utf8
+
+"""Algorithms Utility module."""
+
 from NiaPy.algorithms.algorithm import Algorithm
 from NiaPy.algorithms import basic as basic_algorithms
 from NiaPy.algorithms import modified as modified_algorithms
@@ -6,15 +9,20 @@ from NiaPy.algorithms import other as other_algorithms
 
 
 class AlgorithmUtility:
-    r"""Base class with string mappings to algorithms.
+    r"""
+    Base class with string mappings to algorithms.
 
-    Attributes:
-        classes (Dict[str, Algorithm]): Mapping from stings to algorithms.
+    !!! example
 
+        ```python
+            from NiaPy.algorithms import AlgorithmUtility
+
+            algorithm = AlgorithmUtility().get_algorithm("BatAlgorithm")
+        ```
     """
 
     def __init__(self):
-        r"""Initialize the algorithms."""
+        r"""Initialize the algorithms utility."""
 
         self.algorithm_classes = {
             "BatAlgorithm": basic_algorithms.BatAlgorithm,
@@ -87,12 +95,11 @@ class AlgorithmUtility:
         r"""Get the algorithm.
 
         Arguments:
-            algorithm (Union[str, Algorithm]): String or class that represents the algorithm.
+            algorithm (Union[str, Algorithm]): String or [algorithm instance]([Algorithm](../algorithm/#NiaPy.algorithms.algorithm.Algorithm)).
 
         Returns:
-            Algorithm: Instance of an Algorithm.
+            NiaPy.algorithms.algorithm.Algorithm: Instance of an [Algorithm](../algorithm/#NiaPy.algorithms.algorithm.Algorithm).
         """
-
         if issubclass(type(algorithm), Algorithm) or isinstance(algorithm, Algorithm):
             return algorithm
         elif algorithm in self.algorithm_classes:

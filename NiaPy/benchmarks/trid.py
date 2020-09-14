@@ -84,5 +84,3 @@ class Trid(Benchmark):
 			for i in range(1, D): v2 += X[i] * X[i - 1]
 			return v1 - v2
 		return f
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3
