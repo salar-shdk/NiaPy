@@ -83,5 +83,3 @@ class Elliptic(Benchmark):
 			for i in range(D): val += (10 ** 6) ** (i / (D - 1)) * sol[i]
 			return val
 		return evaluate
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

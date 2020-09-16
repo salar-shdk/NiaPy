@@ -83,5 +83,3 @@ class Discus(Benchmark):
 			for i in range(1, D): val += sol[i] ** 2
 			return sol[0] * 10 ** 6 + val
 		return f
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

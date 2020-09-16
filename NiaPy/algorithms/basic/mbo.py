@@ -65,6 +65,7 @@ class MonarchButterflyOptimization(Algorithm):
 			 Dict[str, Callable]:
 				  * PAR (Callable[[float], bool]): Checks if partition parameter has a proper value.
 				  * PER (Callable[[float], bool]): Checks if period parameter has a proper value.
+
 		See Also:
 			 * :func:`NiaPy.algorithms.algorithm.Algorithm.typeParameters`
 		"""
@@ -265,5 +266,3 @@ class MonarchButterflyOptimization(Algorithm):
 		Fitness, Butterflies = self.evaluateAndSort(task, Butterflies)
 		xb, fxb = self.getBest(Butterflies, Fitness, xb, fxb)
 		return Butterflies, Fitness, xb, fxb, {'tmp_best': tmp_best}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

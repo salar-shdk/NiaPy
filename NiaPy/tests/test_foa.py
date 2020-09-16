@@ -44,5 +44,3 @@ class FOATestCase(AlgorithmTestCase):
 		foa_griewank = self.algo(NP=20, lt=5, lsc=1, gsc=1, al=20, tr=0.35, seed=self.seed)
 		foa_griewankc = self.algo(NP=20, lt=5, lsc=1, gsc=1, al=20, tr=0.35, seed=self.seed)
 		AlgorithmTestCase.test_algorithm_run(self, foa_griewank, foa_griewankc)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

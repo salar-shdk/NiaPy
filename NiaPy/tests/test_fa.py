@@ -27,5 +27,3 @@ class FATestCase(AlgorithmTestCase):
 		fa_griewank = self.algo(NP=20, alpha=0.5, betamin=0.2, gamma=1.0, seed=self.seed)
 		fa_griewankc = self.algo(NP=20, alpha=0.5, betamin=0.2, gamma=1.0, seed=self.seed)
 		AlgorithmTestCase.test_algorithm_run(self, fa_griewank, fa_griewankc)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

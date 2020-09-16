@@ -22,8 +22,9 @@ def Neighborhood(x, delta, task, rnd=rand):
 
 	Returns:
 		Tuple[numpy.ndarray, float]:
-			1. New solution.
-			2. New solutions function/fitness value.
+
+		1. New solution.
+		2. New solutions function/fitness value.
 	"""
 	X = x + rnd.normal(0, delta, task.D)
 	X = task.repair(X, rnd)
@@ -33,24 +34,20 @@ def Neighborhood(x, delta, task, rnd=rand):
 class HillClimbAlgorithm(Algorithm):
 	r"""Implementation of iterative hill climbing algorithm.
 
-	Algorithm:
-		Hill Climbing Algorithm
+	Algorithm: Hill Climbing Algorithm
 
-	Date:
-		2018
+	Date: 2018
 
-	Authors:
-		Jan Popič
+	Authors: Jan Popič
 
-	License:
-		MIT
+	License: MIT
 
 	Reference URL:
 
 	Reference paper:
 
-	See Also:
-		* :class:`NiaPy.algorithms.Algorithm`
+	Note: See also
+		* [Algorithm](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm)
 
 	Attributes:
 		delta (float): Change for searching in neighborhood.
@@ -65,25 +62,26 @@ class HillClimbAlgorithm(Algorithm):
 		Returns:
 			str: Basic information.
 
-		See Also:
-			:func:`NiaPy.algorithms.algorithm.Algorithm.algorithmInfo`
+		Note: See also
+			* [Algorith.algorithmInfo](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.algorithmInfo)
 		"""
-		return r"""TODO"""
+		return r"""Hill Climbing"""
 
 	@staticmethod
 	def typeParameters():
-		r"""TODO.
+		r"""Get dictionary with functions for checking values of parameters.
 
 		Returns:
 			Dict[str, Callable]:
-				* delta (Callable[[Union[int, float]], bool]): TODO
+
+			* delta (Callable[[Union[int, float]], bool]): Check if delta is instance of int or float and if delta > 0.
 		"""
 		return {'delta': lambda x: isinstance(x, (int, float)) and x > 0}
 
 	def setParameters(self, delta=0.5, Neighborhood=Neighborhood, **ukwargs):
 		r"""Set the algorithm parameters/arguments.
 
-		Args:
+		Attributes:
 			* delta (Optional[float]): Change for searching in neighborhood.
 			* Neighborhood (Optional[Callable[numpy.ndarray, float, Task], Tuple[numpy.ndarray, float]]]): Function for getting neighbours.
 		"""
@@ -106,9 +104,10 @@ class HillClimbAlgorithm(Algorithm):
 
 		Returns:
 			Tuple[numpy.ndarray, float, Dict[str, Any]]:
-				1. New individual.
-				2. New individual function/fitness value.
-				3. Additional arguments.
+
+			1. New individual.
+			2. New individual function/fitness value.
+			3. Additional arguments.
 		"""
 		x = task.Lower + self.rand(task.D) * task.bRange
 		return x, task.eval(x), {}
@@ -126,9 +125,10 @@ class HillClimbAlgorithm(Algorithm):
 
 		Returns:
 			Tuple[numpy.ndarray, float, numpy.ndarray, float, Dict[str, Any]]:
-				1. New solution.
-				2. New solutions function/fitness value.
-				3. Additional arguments.
+
+			1. New solution.
+			2. New solutions function/fitness value.
+			3. Additional arguments.
 		"""
 		lo, xn = False, task.bcLower() + task.bcRange() * self.rand(task.D)
 		xn_f = task.eval(xn)
@@ -138,5 +138,3 @@ class HillClimbAlgorithm(Algorithm):
 			else: lo = True or task.stopCond()
 		xb, fxb = self.getBest(xn, xn_f, xb, fxb)
 		return xn, xn_f, xb, fxb, {}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

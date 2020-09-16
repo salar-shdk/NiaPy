@@ -109,7 +109,7 @@ class BatAlgorithm(Algorithm):
 	def initPopulation(self, task):
 		r"""Initialize the starting population.
 
-		Parameters:
+		Attributes:
 			task (Task): Optimization task
 
 		Returns:
@@ -145,7 +145,7 @@ class BatAlgorithm(Algorithm):
 	def runIteration(self, task, Sol, Fitness, xb, fxb, S, Q, v, **dparams):
 		r"""Core function of Bat Algorithm.
 
-		Parameters:
+		Attributes:
 			task (Task): Optimization task.
 			Sol (numpy.ndarray): Current population
 			Fitness (numpy.ndarray[float]): Current population fitness/funciton values
@@ -180,5 +180,3 @@ class BatAlgorithm(Algorithm):
 			if (Fnew <= Fitness[i]) and (self.rand() < self.A): Sol[i], Fitness[i] = S[i], Fnew
 			if Fnew <= fxb: xb, fxb = S[i].copy(), Fnew
 		return Sol, Fitness, xb, fxb, {'S': S, 'Q': Q, 'v': v}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

@@ -407,5 +407,3 @@ class ExpandedScaffer(Benchmark):
 			for i in range(1, D): val += g(x[i - 1], x[i])
 			return g(x[D - 1], x[0]) + val
 		return f
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

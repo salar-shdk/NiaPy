@@ -32,8 +32,7 @@ __all__ = [
 
 
 def limit_repair(x, Lower, Upper, **kwargs):
-    r"""
-    Repair solution and put the solution in the random position inside of the bounds of problem.
+    r"""Repair solution and put the solution in the random position inside of the bounds of problem.
 
     Arguments:
         x (numpy.ndarray): Solution to check and repair if needed.
@@ -53,8 +52,7 @@ def limit_repair(x, Lower, Upper, **kwargs):
 
 
 def limitInversRepair(x, Lower, Upper, **kwargs):
-    r"""
-    Repair solution and put the solution in the random position inside of the bounds of problem.
+    r"""Repair solution and put the solution in the random position inside of the bounds of problem.
 
     Arguments:
         x (numpy.ndarray): Solution to check and repair if needed.
@@ -74,8 +72,7 @@ def limitInversRepair(x, Lower, Upper, **kwargs):
 
 
 def wangRepair(x, Lower, Upper, **kwargs):
-    r"""
-    Repair solution and put the solution in the random position inside of the bounds of problem.
+    r"""Repair solution and put the solution in the random position inside of the bounds of problem.
 
     Arguments:
         x (numpy.ndarray): Solution to check and repair if needed.
@@ -95,8 +92,7 @@ def wangRepair(x, Lower, Upper, **kwargs):
 
 
 def randRepair(x, Lower, Upper, rnd=rand, **kwargs):
-    r"""
-    Repair solution and put the solution in the random position inside of the bounds of problem.
+    r"""Repair solution and put the solution in the random position inside of the bounds of problem.
 
     Arguments:
         x (numpy.ndarray): Solution to check and repair if needed.
@@ -117,8 +113,7 @@ def randRepair(x, Lower, Upper, rnd=rand, **kwargs):
 
 
 def reflectRepair(x, Lower, Upper, **kwargs):
-    r"""
-    Repair solution and put the solution in search space with reflection of how much the solution violates a bound.
+    r"""Repair solution and put the solution in search space with reflection of how much the solution violates a bound.
 
     Args:
         x (numpy.ndarray): Solution to be fixed.
@@ -138,8 +133,7 @@ def reflectRepair(x, Lower, Upper, **kwargs):
 
 
 def fullArray(a, D):
-    r"""
-    Fill or create array of length D, from value or value form a.
+    r"""Fill or create array of length D, from value or value form a.
 
     Arguments:
         a (Union[int, float, numpy.ndarray], Iterable[Any]): Input values for fill.
@@ -166,8 +160,7 @@ def fullArray(a, D):
 
 
 def objects2array(objs):
-    r"""
-    Convert `Iterable` array or list to `NumPy` array.
+    r"""Convert `Iterable` array or list to `NumPy` array.
 
     Args:
         objs (Iterable[Any]): Array or list to convert.

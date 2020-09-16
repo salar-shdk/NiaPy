@@ -84,5 +84,3 @@ class Infinity(Benchmark):
 			for i in range(D): val += X[i] ** 6 * (sin(1 / X[i]) + 2)
 			return val
 		return f
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

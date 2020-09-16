@@ -1,16 +1,19 @@
 # encoding=utf8
 
-"""Implementation of benchmarks utility function."""
+"""Benchmarks Utility module."""
 
 from NiaPy import benchmarks
 
-
-class Utility:
+class BenchmarkUtility:
     r"""Base class with string mappings to benchmarks.
 
-    Attributes:
-        classes (Dict[str, Benchmark]): Mapping from stings to benchmark.
+    !!! example
 
+        ```python
+            from NiaPy.benchmarks import BenchmarkUtility
+
+            benchmark = BenchmarkUtility().get_benchmark("rastrigin")
+        ```
     """
 
     def __init__(self):
@@ -68,8 +71,6 @@ class Utility:
             "zakharov": benchmarks.Zakharov
         }
 
-        self.algorithm_classes = {}
-
     def get_benchmark(self, benchmark):
         r"""Get the optimization problem.
 
@@ -87,14 +88,3 @@ class Utility:
             return self.benchmark_classes[benchmark]()
         else:
             raise TypeError("Passed benchmark is not defined!")
-
-    @classmethod
-    def __raiseLowerAndUpperNotDefined(cls):
-        r"""Trow exception if lower and upper bounds are not defined in benchmark.
-
-        Raises:
-            TypeError: Type error.
-
-        """
-
-        raise TypeError("Upper and Lower value must be defined!")

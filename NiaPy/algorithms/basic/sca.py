@@ -163,5 +163,3 @@ class SineCosineAlgorithm(Algorithm):
 		P_f = apply_along_axis(task.eval, 1, P)
 		xb, fxb = self.getBest(P, P_f, xb, fxb)
 		return P, P_f, xb, fxb, {}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

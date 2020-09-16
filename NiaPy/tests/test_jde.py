@@ -95,5 +95,3 @@ class dynNpMsjDETestCase(AlgorithmTestCase):
 		jde_griewank = DynNpMultiStrategySelfAdaptiveDifferentialEvolution(NP=40, F=0.5, F_l=0.0, F_u=2.0, Tao1=0.9, CR=0.1, Tao2=0.45, seed=self.seed)
 		jde_griewankc = MultiStrategySelfAdaptiveDifferentialEvolution(NP=40, F=0.5, F_l=0.0, F_u=2.0, Tao1=0.9, CR=0.1, Tao2=0.45, seed=self.seed)
 		AlgorithmTestCase.test_algorithm_run(self, jde_griewank, jde_griewankc)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

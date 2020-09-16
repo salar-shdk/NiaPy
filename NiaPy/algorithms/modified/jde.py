@@ -417,5 +417,3 @@ class DynNpMultiStrategySelfAdaptiveDifferentialEvolution(MultiStrategySelfAdapt
 
 	def postSelection(self, pop, task, **kwargs):
 		return DynNpSelfAdaptiveDifferentialEvolutionAlgorithm.postSelection(self, pop, task)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

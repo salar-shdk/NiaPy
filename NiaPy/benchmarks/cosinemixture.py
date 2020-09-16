@@ -84,5 +84,3 @@ class CosineMixture(Benchmark):
 			for i in range(D): v1, v2 = v1 + cos(5 * pi * X[i]), v2 + X[i] ** 2
 			return -0.1 * v1 - v2
 		return f
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

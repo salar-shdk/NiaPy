@@ -15,8 +15,8 @@ def coolDelta(currentT, T, deltaT, nFES, **kwargs):
 	r"""Calculate new temperature by differences.
 
 	Args:
-		currentT (float):
-		T (float):
+		currentT (float): Current temperature.
+		T (float): Starting temperature.
 		kwargs (Dict[str, Any]): Additional arguments.
 
 	Returns:
@@ -29,8 +29,8 @@ def coolLinear(currentT, T, deltaT, nFES, **kwargs):
 
 	Args:
 		currentT (float): Current temperature.
-		T (float):
-		deltaT (float):
+		T (float): Starting temperature.
+		deltaT (float): Change in temperature.
 		nFES (int): Number of evaluations done.
 		kwargs (Dict[str, Any]): Additional arguments.
 
@@ -42,21 +42,17 @@ def coolLinear(currentT, T, deltaT, nFES, **kwargs):
 class SimulatedAnnealing(Algorithm):
 	r"""Implementation of Simulated Annealing Algorithm.
 
-	Algorithm:
-		Simulated Annealing Algorithm
+	Algorithm: Simulated Annealing Algorithm
 
-	Date:
-		2018
+	Date: 2018
 
-	Authors:
-		Jan Popič and Klemen Berkovič
+	Authors: Jan Popič and Klemen Berkovič
 
-	License:
-		MIT
+	License: MIT
 
 	Reference URL:
 
-	Reference paper:
+	Reference:
 
 	Attributes:
 		Name (List[str]): List of strings representing algorithm name.
@@ -66,8 +62,8 @@ class SimulatedAnnealing(Algorithm):
 		coolingMethod (Callable): Neighbourhood function.
 		epsilon (float): Error value.
 
-	See Also:
-		* :class:`NiaPy.algorithms.Algorithm`
+	Note: See also
+		* [Algorithm](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm)
 	"""
 	Name = ['SimulatedAnnealing', 'SA']
 
@@ -78,10 +74,10 @@ class SimulatedAnnealing(Algorithm):
 		Returns:
 			str: Basic information of algorithm.
 
-		See Also:
-			* :func:`NiaPy.algorithms.Algorithm.algorithmInfo`
+		Note: See also
+			* [Algorith.algorithmInfo](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.algorithmInfo)
 		"""
-		return r"""None"""
+		return r"""Simulated Annealing."""
 
 	@staticmethod
 	def typeParameters():
@@ -89,7 +85,13 @@ class SimulatedAnnealing(Algorithm):
 
 		Returns:
 			Dict[str, Callable]:
-				* delta (Callable[[Union[float, int], bool]): TODO
+				* delta (Callable[[Union[float, int], bool]): Check if delta is instance of int or float and if delta is > 0.
+				* T (Callable[[Union[float, int], bool]): Check if T is instance of int or float and if T > 0.
+				* deltaT (Callable[[Union[float, int], bool]): Check if deltaT is instance of int or float and if deltaT > 0.
+				* epsilon (Callable[float, bool]): Check if epsilon is instance of float and if epsilon values is in range 0 < epsilon < 1.
+
+		Note: See also
+			* [Algorithm.typeParameters](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.typeParameters)
 		"""
 		return {
 			'delta': lambda x: isinstance(x, (int, float)) and x > 0,
@@ -101,15 +103,15 @@ class SimulatedAnnealing(Algorithm):
 	def setParameters(self, delta=0.5, T=2000, deltaT=0.8, coolingMethod=coolDelta, epsilon=1e-23, **ukwargs):
 		r"""Set the algorithm parameters/arguments.
 
-		Arguments:
+		Attributes:
 			delta (Optional[float]): Movement for neighbour search.
 			T (Optional[float]); Starting temperature.
 			deltaT (Optional[float]): Change in temperature.
 			coolingMethod (Optional[Callable]): Neighbourhood function.
 			epsilon (Optional[float]): Error value.
 
-		See Also
-			* :func:`NiaPy.algorithms.Algorithm.setParameters`
+		Note: See also
+			* [Algorithm.setParameters](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.setParameters)
 		"""
 		ukwargs.pop('NP', None)
 		Algorithm.setParameters(self, NP=1, **ukwargs)
@@ -121,8 +123,8 @@ class SimulatedAnnealing(Algorithm):
 		Returns:
 			Dict[str, Any]:
 
-		See Also
-			* :func:`NiaPy.algorithms.Algorithm.getParameters`
+		Note: See also
+			* [Algorithm.getParameters](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.getParameters)
 		"""
 		d = Algorithm.getParameters(self)
 		d.update({
@@ -141,6 +143,7 @@ class SimulatedAnnealing(Algorithm):
 
 		Returns:
 			Tuple[numpy.ndarray, float, dict]:
+
 			1. Initial solution
 			2. Initial solutions fitness/objective value
 			3. Additional arguments
@@ -163,6 +166,7 @@ class SimulatedAnnealing(Algorithm):
 
 		Returns:
 			Tuple[numpy.ndarray, float, numpy.ndarray, float, dict]:
+
 			1. New solution
 			2. New solutions fitness/objective value
 			3. New global best solution
@@ -176,5 +180,3 @@ class SimulatedAnnealing(Algorithm):
 		curT = self.cool(curT, self.T, deltaT=self.deltaT, nFES=task.nFES)
 		xb, fxb = self.getBest(x, xfit, xb, fxb)
 		return x, xfit, xb, fxb, {'curT': curT}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

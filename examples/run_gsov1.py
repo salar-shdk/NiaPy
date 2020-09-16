@@ -2,7 +2,8 @@
 # This is temporary fix to import module from parent folder
 # It will be removed when package is published on PyPI
 import sys
-sys.path.append('../')
+
+sys.path.append("../")
 # End of fix
 
 from NiaPy.algorithms.basic import GlowwormSwarmOptimizationV1
@@ -14,5 +15,3 @@ for i in range(5):
     algo = GlowwormSwarmOptimizationV1()
     best = algo.run(task)
     print(best)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

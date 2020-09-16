@@ -20,8 +20,7 @@ def makeCbechs():
 	return bencs.__all__
 
 def optimizationType(x):
-	r"""
-	Map function for optimization type.
+	r"""Map function for optimization type.
 
 	Args:
 		x (str): String representing optimization type.
@@ -33,8 +32,7 @@ def optimizationType(x):
 	return OptimizationType.MAXIMIZATION if x == "max" else OptimizationType.MINIMIZATION
 
 def MakeArgParser():
-	r"""
-	Create/Make pareser for parsing string.
+	r"""Create/Make pareser for parsing string.
 
 	Info:
 		* `-a` or `--algorithm` (str):
@@ -79,8 +77,7 @@ def MakeArgParser():
 	return parser
 
 def getArgs(av):
-	r"""
-	Parse arguments from input string.
+	r"""Parse arguments from input string.
 
 	Args:
 		av (str): String to parse.
@@ -96,8 +93,7 @@ def getArgs(av):
 	return a
 
 def getDictArgs(argv):
-	r"""
-	Parse input string.
+	r"""Parse input string.
 
 	Args:
 		argv (str): Input string to parse for arguments

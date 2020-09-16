@@ -1019,5 +1019,3 @@ class ComprehensiveLearningParticleSwarmOptimizer(ParticleSwarmAlgorithm):
 					popb[i], fpopb[i] = pop[i].copy(), fpop[i]
 					if fpop[i] < fxb: xb, fxb = pop[i].copy(), fpop[i]
 		return pop, fpop, xb, fxb, {'popb': popb, 'fpopb': fpopb, 'vMin': vMin, 'vMax': vMax, 'V': V, 'flag': flag, 'Pc': Pc}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

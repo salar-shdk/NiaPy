@@ -475,5 +475,3 @@ class MonkeyKingEvolutionV3(MonkeyKingEvolutionV1):
 		iw, ib_gb = argmax(X_f), argmin(X_gb_f)
 		if X_gb_f[ib_gb] <= X_f[iw]: X[iw], X_f[iw] = X_gb[ib_gb], X_gb_f[ib_gb]
 		return X, X_f, xb, fxb, {'k': k, 'c': c}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

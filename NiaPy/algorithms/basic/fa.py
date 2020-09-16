@@ -178,5 +178,3 @@ class FireflyAlgorithm(Algorithm):
 		Intensity[where(evalF)] = apply_along_axis(task.eval, 1, Fireflies[where(evalF)])
 		xb, fxb = self.getBest(Fireflies, Intensity, xb, fxb)
 		return Fireflies, Intensity, xb, fxb, {'alpha': alpha}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

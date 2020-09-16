@@ -56,5 +56,3 @@ class ASOCrossoverTestCase(AlgorithmTestCase):
 		aso_griewank = self.algo(NP=40, Combination=Crossover, seed=self.seed)
 		aso_griewankc = self.algo(NP=40, Combination=Crossover, seed=self.seed)
 		AlgorithmTestCase.test_algorithm_run(self, aso_griewank, aso_griewankc)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

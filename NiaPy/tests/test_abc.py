@@ -26,5 +26,3 @@ class ABCTestCase(AlgorithmTestCase):
 		abc_griewank = self.algo(NP=10, seed=self.seed)
 		abc_griewankc = self.algo(NP=10, seed=self.seed)
 		AlgorithmTestCase.test_algorithm_run(self, abc_griewank, abc_griewankc)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

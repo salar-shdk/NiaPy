@@ -58,50 +58,8 @@ Documentation for the other algorithms can be found here: [NiaPy.algorithms.othe
 
 ### Benchmark functions
 
-NiaPy features more than 30 benchmark functions. Documentation for them can be found here: ???.
+NiaPy features more than 30 benchmark functions. Documentation for them can be found here: [NiaPy.benchmarks](reference/benchmarks).
 
-- Ackley
-- Alpine
-    - Alpine1
-    - Alpine2
-- Bent Cigar
-- Chung Reynolds
-- Csendes
-- Discus
-- Dixon-Price
-- Elliptic
-- Griewank
-- Happy cat
-- HGBat
-- Katsuura
-- Levy
-- Michalewicz
-- Perm
-- Pintér
-- Powell
-- Qing
-- Quintic
-- Rastrigin
-- Ridge
-- Rosenbrock
-- Salomon
-- Schumer Steiglitz
-- Schwefel
-    - Schwefel 2.21
-    - Schwefel 2.22
-- Sphere
-    - Sphere2 -> Sphere with different powers
-    - Sphere3 -> Rotated hyper-ellipsoid
-- Step
-    - Step2
-    - Step3
-- Stepint
-- Styblinski-Tang
-- Sum Squares
-- Trid
-- Weierstrass
-- Whitley
-- Zakharov
 
 ### Other features:
 
@@ -112,8 +70,32 @@ NiaPy features more than 30 benchmark functions. Documentation for them can be f
 
 ## Why use NiaPy?
 
-! TODO: write why use NiaPy !
+NiaPy is micro-framework for using and building nature-inspired algorithms dedicated for researchers and practitioners. The major strenghtness of NiaPy is large collection of ready to use algorithms and benchmark functions, as well as the simplistic architecture design which allows users to add their own algorithms or extend the existing ones. The NiaPy micro-framework can also be easily used for solving real-world problems. The usabillity of NiaPy is shown in the numerous toolboxes build on top of it and large number of citations in many scientific papers. For the detailed list please look at the next section.
 
 ## Who uses NiaPy?
 
-! TODO: implement this !
+NiaPy is used in many research papers. The full list of papers using NiaPy is available [here](https://scholar.google.si/scholar?oi=bibs&hl=en&cites=15685269763828608718&as_sdt=5).
+
+Additionally, here is the list of known projects which use NiaPy:
+
+<div x-data="alpineInstance()"
+     x-init="fetch('https://github-dependents.swarm.grega.xyz/NiaOrg/Niapy')
+                      .then(response => response.json())
+                      .then(data => dependents = data.entries)">
+    <ul>
+        <template x-for="dependent in dependents">
+            <li>
+                <a x-bind:href="'https://github.com/'+dependent.org+'/'+dependent.repo" x-text="dependent.repo"></a>
+                <span x-text="'⭐ '+dependent.stars+'🍴'+dependent.forks"></span>
+            </li>
+        </template>
+    </ul>
+</div>
+
+<script>
+function alpineInstance() {
+  return {
+    dependents: [],
+  }
+}
+</script>
