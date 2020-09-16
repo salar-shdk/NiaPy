@@ -162,5 +162,3 @@ class CuckooSearch(Algorithm):
 		pop, fpop = self.emptyNests(pop, fpop, pa_v, task)
 		xb, fxb = self.getBest(pop, fpop, xb, fxb)
 		return pop, fpop, xb, fxb, {'pa_v': pa_v}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

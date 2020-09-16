@@ -83,5 +83,3 @@ class Powell(Benchmark):
 			for i in range(1, (D // 4) + 1): v += (X[4 * i - 4] + 10 * X[4 * i - 3]) ** 2 + 5 * (X[4 * i - 2] - X[4 * i - 1]) ** 2 + (X[4 * i - 3] - 2 * X[4 * i - 2]) ** 4 + 10 * (X[4 * i - 4] - X[4 * i - 1]) ** 4
 			return v
 		return f
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

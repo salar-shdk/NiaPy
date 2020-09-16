@@ -23,10 +23,11 @@ nav:
         - Other: reference/algorithms/other.md
         - Statistics: reference/algorithms/statistics.md
         - Utility: reference/algorithms/utility.md
-    - Benchmarks: reference/benchmarks.md
-    - Task:
-        - Task: reference/task/task.md
-        - Utility: reference/task/utility.md
+    - Benchmarks:
+        - Benchmark: reference/benchmarks/benchmark.md
+        - Benchmarks: reference/benchmarks/benchmarks.md
+        - Utility: reference/benchmarks/utility.md
+    - Task: reference/task.md
     - Util:
         - Argparser: reference/util/argparser.md
         - Exception: reference/util/exception.md
@@ -55,6 +56,7 @@ extra_javascript:
   - js/termynal.js
   - js/custom.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
 extra:
   version: 2.0.0rc12

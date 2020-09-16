@@ -4,8 +4,7 @@
 
 
 class FesException(Exception):
-    r"""
-    Exception for exceeding number of maximum function evaluations.
+    r"""Exception for exceeding number of maximum function evaluations.
 
     Author: Klemen Berkovič
 
@@ -15,8 +14,7 @@ class FesException(Exception):
     """
 
     def __init__(self, message='Reached the allowed number of the function evaluations!!!'):
-        r"""
-        Initialize the exception.
+        r"""Initialize the exception.
 
         Args:
                 message (Optional[str]): Message show when this exception is thrown
@@ -26,8 +24,7 @@ class FesException(Exception):
 
 
 class GenException(Exception):
-    r"""
-    Exception for exceeding number of algorithm iterations/generations.
+    r"""Exception for exceeding number of algorithm iterations/generations.
 
     Author: Klemen Berkovič
 
@@ -37,8 +34,7 @@ class GenException(Exception):
     """
 
     def __init__(self, message='Reached the allowed number of the algorithm evaluations!!!'):
-        r"""
-        Initialize the exception.
+        r"""Initialize the exception.
 
         Args:
             message (Optional[str]): Message that is shown when this exceptions is thrown
@@ -48,8 +44,7 @@ class GenException(Exception):
 
 
 class TimeException(Exception):
-    r"""
-    Exception for exceeding time limit.
+    r"""Exception for exceeding time limit.
 
     Author: Klemen Berkovič
 
@@ -59,8 +54,7 @@ class TimeException(Exception):
     """
 
     def __init__(self, message='Reached the allowed run time of the algorithm'):
-        r"""
-        Initialize the exception.
+        r"""Initialize the exception.
 
         Args:
                 message (Optional[str]): Message that is show when this exception is thrown.
@@ -71,8 +65,7 @@ class TimeException(Exception):
 
 
 class RefException(Exception):
-    r"""
-    Exception for exceeding reference value of function/fitness value.
+    r"""Exception for exceeding reference value of function/fitness value.
 
     Author: Klemen Berkovič
 
@@ -82,8 +75,7 @@ class RefException(Exception):
     """
 
     def __init__(self, message='Reached the reference point!!!'):
-        r"""
-        Initialize the exception.
+        r"""Initialize the exception.
 
         Args:
                 message (Optional[str]): Message that is show when this exception is thrown.

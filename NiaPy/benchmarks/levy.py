@@ -85,5 +85,3 @@ class Levy(Benchmark):
 			for i in range(D - 1): v += (w(X[i]) - 1) ** 2 * (1 + 10 * sin(pi * w(X[i]) + 1) ** 2) + (w(X[-1]) - 1) ** 2 * (1 + sin(2 * pi * w(X[-1]) ** 2))
 			return sin(pi * w(X[0])) ** 2 + v
 		return f
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

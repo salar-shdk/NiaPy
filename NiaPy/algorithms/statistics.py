@@ -8,8 +8,7 @@ __all__ = ['BasicStatistics']
 
 
 class BasicStatistics:
-    r"""
-    Class implementing the basic statistics.
+    r"""Class implementing the basic statistics.
 
     !!! example
 
@@ -38,8 +37,7 @@ class BasicStatistics:
     """List[str]: List of names for BasicStatistics class."""
 
     def __init__(self, array):
-        r"""
-        Initialize BasicStatistics.
+        r"""Initialize BasicStatistics.
 
         Args:
             array (Union[array, np.ndarray]): Array of results.
@@ -47,8 +45,7 @@ class BasicStatistics:
         self.array = array if isinstance(array, np.ndarray) else np.asarray(array)
 
     def min_value(self):
-        r"""
-        Get minimum value from an array.
+        r"""Get minimum value from an array.
 
         Returns:
             float: Min value.
@@ -56,8 +53,7 @@ class BasicStatistics:
         return self.array.min()
 
     def max_value(self):
-        r"""
-        Get maximum value from an array.
+        r"""Get maximum value from an array.
 
         Returns:
             float: Max value.
@@ -65,8 +61,7 @@ class BasicStatistics:
         return self.array.max()
 
     def mean(self):
-        r"""
-        Get mean value from an array.
+        r"""Get mean value from an array.
 
         Returns:
             float: Mean value.
@@ -74,8 +69,7 @@ class BasicStatistics:
         return self.array.mean()
 
     def median(self):
-        r"""
-        Get median value from an array.
+        r"""Get median value from an array.
 
         Returns:
             float: Median value.
@@ -83,8 +77,7 @@ class BasicStatistics:
         return np.median(self.array)
 
     def standard_deviation(self):
-        r"""
-        Get standard deviation from an array.
+        r"""Get standard deviation from an array.
 
         Returns:
             float: Standard deviation value.
@@ -92,8 +85,7 @@ class BasicStatistics:
         return self.array.std(ddof=1)
 
     def generate_standard_report(self):
-        r"""
-        Generate basic statistics report.
+        r"""Generate basic statistics report.
 
         Returns:
             str: Basic statistics report string.

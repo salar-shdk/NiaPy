@@ -106,5 +106,3 @@ class AdaptiveArchiveDifferentialEvolution(DifferentialEvolution):
 	def runIteration(self, task, pop, fpop, xb, fxb, **dparams):
 		# TODO Implement algorithm
 		return pop, fpop, xb, fxb, dparams
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

@@ -64,7 +64,7 @@ def CrossBest1(pop, ic, x_b, f, cr, rnd=rand, *args):
 
 		:math:`\mathbf{x}_{i, G+1} = \begin{cases} \mathbf{u}_{i, G+1}, & \text{if $f(\mathbf{u}_{i, G+1}) \leq f(\mathbf{x}_{i, G})$}, \\ \mathbf{x}_{i, G}, & \text{otherwise}. \end{cases}`
 
-	args:
+	Args:
 		pop (numpy.ndarray[Individual]): Current population.
 		ic (int): Index of individual being mutated.
 		x_b (Individual): Current global best individual.
@@ -73,7 +73,7 @@ def CrossBest1(pop, ic, x_b, f, cr, rnd=rand, *args):
 		rnd (mtrand.RandomState): Random generator.
 		args (list): Additional arguments.
 
-	returns:
+	Returns:
 		numpy.ndarray: Mutated and mixed individual.
 	"""
 	j = rnd.randint(len(pop[ic]))
@@ -1107,5 +1107,3 @@ class AgingNpMultiMutationDifferentialEvolution(AgingNpDifferentialEvolution, Mu
 			numpy.ndarray: New population of individuals.
 		"""
 		return MultiStrategyDifferentialEvolution.evolve(self, pop, xb, task, **kwargs)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

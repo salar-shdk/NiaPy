@@ -173,5 +173,3 @@ class GravitationalSearchAlgorithm(Algorithm):
 		X_f = apply_along_axis(task.eval, 1, X)
 		xb, fxb = self.getBest(X, X_f, xb, fxb)
 		return X, X_f, xb, fxb, {'v': v}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

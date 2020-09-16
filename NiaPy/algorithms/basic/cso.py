@@ -4,11 +4,13 @@ import math
 
 import numpy as np
 from NiaPy.algorithms.algorithm import Algorithm
-logging.basicConfig()
-logger = logging.getLogger('NiaPy.algorithms.basic')
-logger.setLevel('INFO')
 
-__all__ = ['CatSwarmOptimization']
+logging.basicConfig()
+logger = logging.getLogger("NiaPy.algorithms.basic")
+logger.setLevel("INFO")
+
+__all__ = ["CatSwarmOptimization"]
+
 
 class CatSwarmOptimization(Algorithm):
     r"""Implementation of Cat swarm optimiization algorithm.
@@ -23,33 +25,45 @@ class CatSwarmOptimization(Algorithm):
 
     **Reference paper:** Chu, Shu-Chuan & Tsai, Pei-Wei & Pan, Jeng-Shyang. (2006). Cat Swarm Optimization. 854-858. 10.1007/11801603_94.
     """
-    Name = ['CatSwarmOptimization', 'CSO']
+    Name = ["CatSwarmOptimization", "CSO"]
 
     @staticmethod
     def algorithmInfo():
-    	r"""Get algorithm information.
+        r"""Get algorithm information.
 
-    	Returns:
-    		str: Algorithm information.
+        Returns:
+                str: Algorithm information.
 
-    	See Also:
-    		* :func:`NiaPy.algorithms.Algorithm.algorithmInfo`
-    	"""
-    	return r"""Chu, Shu-Chuan & Tsai, Pei-Wei & Pan, Jeng-Shyang. (2006). Cat Swarm Optimization. 854-858. 10.1007/11801603_94."""
+        See Also:
+                * :func:`NiaPy.algorithms.Algorithm.algorithmInfo`
+        """
+        return r"""Chu, Shu-Chuan & Tsai, Pei-Wei & Pan, Jeng-Shyang. (2006). Cat Swarm Optimization. 854-858. 10.1007/11801603_94."""
 
     @staticmethod
-    def typeParameters(): return {
-        'NP': lambda x: isinstance(x, int) and x > 0,
-        'MR': lambda x: isinstance(x, (int, float)) and 0 <= x <= 1,
-        'C1': lambda x: isinstance(x, (int, float)) and x >= 0,
-        'SMP': lambda x: isinstance(x, int) and x > 0,
-        'SPC': lambda x: isinstance(x, bool),
-        'CDC': lambda x: isinstance(x, (int, float)) and 0 <= x <= 1,
-        'SRD': lambda x: isinstance(x, (int, float)) and 0 <= x <= 1,
-        'vMax': lambda x: isinstance(x, (int, float)) and x > 0
-    }
+    def typeParameters():
+        return {
+            "NP": lambda x: isinstance(x, int) and x > 0,
+            "MR": lambda x: isinstance(x, (int, float)) and 0 <= x <= 1,
+            "C1": lambda x: isinstance(x, (int, float)) and x >= 0,
+            "SMP": lambda x: isinstance(x, int) and x > 0,
+            "SPC": lambda x: isinstance(x, bool),
+            "CDC": lambda x: isinstance(x, (int, float)) and 0 <= x <= 1,
+            "SRD": lambda x: isinstance(x, (int, float)) and 0 <= x <= 1,
+            "vMax": lambda x: isinstance(x, (int, float)) and x > 0,
+        }
 
-    def setParameters(self, NP=30, MR=0.1, C1=2.05, SMP=3, SPC=True, CDC=0.85, SRD=0.2, vMax=1.9, **ukwargs):
+    def setParameters(
+        self,
+        NP=30,
+        MR=0.1,
+        C1=2.05,
+        SMP=3,
+        SPC=True,
+        CDC=0.85,
+        SRD=0.2,
+        vMax=1.9,
+        **ukwargs
+    ):
         r"""Set the algorithm parameters.
 
         Arguments:
@@ -62,11 +76,19 @@ class CatSwarmOptimization(Algorithm):
             SRD (float): Seeking range of the selected dimension.
             vMax (float): Maximal velocity.
 
-            See Also:
-                * :func:`NiaPy.algorithms.Algorithm.setParameters`
+        See Also:
+            * :func:`NiaPy.algorithms.Algorithm.setParameters`
         """
         Algorithm.setParameters(self, NP=NP, **ukwargs)
-        self.MR, self.C1, self.SMP, self.SPC, self.CDC, self.SRD, self.vMax = MR, C1, SMP, SPC, CDC, SRD, vMax
+        self.MR, self.C1, self.SMP, self.SPC, self.CDC, self.SRD, self.vMax = (
+            MR,
+            C1,
+            SMP,
+            SPC,
+            CDC,
+            SRD,
+            vMax,
+        )
 
     def initPopulation(self, task):
         r"""Initialize population.
@@ -84,8 +106,8 @@ class CatSwarmOptimization(Algorithm):
             * :func:`NiaPy.algorithms.Algorithm.initPopulation`
         """
         pop, fpop, d = Algorithm.initPopulation(self, task)
-        d['modes'] = self.randomSeekTrace()
-        d['velocities'] = self.uniform(-self.vMax, self.vMax, [len(pop), task.D])
+        d["modes"] = self.randomSeekTrace()
+        d["velocities"] = self.uniform(-self.vMax, self.vMax, [len(pop), task.D])
         return pop, fpop, d
 
     def repair(self, x, l, u):
@@ -114,7 +136,7 @@ class CatSwarmOptimization(Algorithm):
         lista = np.zeros((self.NP,), dtype=int)
         indexes = np.arange(self.NP)
         self.Rand.shuffle(indexes)
-        lista[indexes[:int(self.NP * self.MR)]] = 1
+        lista[indexes[: int(self.NP * self.MR)]] = 1
         return lista
 
     def weightedSelection(self, weights):
@@ -153,11 +175,15 @@ class CatSwarmOptimization(Algorithm):
             cat_copies.append(cat.copy())
             indexes = np.arange(task.D)
             self.Rand.shuffle(indexes)
-            to_vary_indexes = indexes[:int(task.D * self.CDC)]
+            to_vary_indexes = indexes[: int(task.D * self.CDC)]
             if self.randint(2) == 1:
-                cat_copies[j][to_vary_indexes] += cat_copies[j][to_vary_indexes] * self.SRD
+                cat_copies[j][to_vary_indexes] += (
+                    cat_copies[j][to_vary_indexes] * self.SRD
+                )
             else:
-                cat_copies[j][to_vary_indexes] -= cat_copies[j][to_vary_indexes] * self.SRD
+                cat_copies[j][to_vary_indexes] -= (
+                    cat_copies[j][to_vary_indexes] * self.SRD
+                )
             cat_copies[j] = task.repair(cat_copies[j])
             cat_copies_fs.append(task.eval(cat_copies[j]))
         if self.SPC:
@@ -189,13 +215,18 @@ class CatSwarmOptimization(Algorithm):
             cat (numpy.ndarray): Individual from population.
             velocity (numpy.ndarray): Velocity of individual.
             xb (numpy.ndarray): Current best individual.
+
         Returns:
             Tuple[numpy.ndarray, float, numpy.ndarray]:
                 1. Updated individual's position
                 2. Updated individual's fitness/function value
                 3. Updated individual's velocity vector
         """
-        Vnew = self.repair(velocity + (self.uniform(0, 1, len(velocity)) * self.C1 * (xb - cat)), np.full(task.D, -self.vMax), np.full(task.D, self.vMax))
+        Vnew = self.repair(
+            velocity + (self.uniform(0, 1, len(velocity)) * self.C1 * (xb - cat)),
+            np.full(task.D, -self.vMax),
+            np.full(task.D, self.vMax),
+        )
         cat_new = task.repair(cat + Vnew)
         return cat_new, task.eval(cat_new), Vnew
 
@@ -224,11 +255,20 @@ class CatSwarmOptimization(Algorithm):
         pop_copies = pop.copy()
         for k in range(len(pop_copies)):
             if modes[k] == 0:
-                pop_copies[k], fpop[k], pop_copies[:], fpop[:] = self.seekingMode(task, pop_copies[k], fpop[k], pop_copies, fpop, fxb)
+                pop_copies[k], fpop[k], pop_copies[:], fpop[:] = self.seekingMode(
+                    task, pop_copies[k], fpop[k], pop_copies, fpop, fxb
+                )
             else:  # if cat in tracing mode
-                pop_copies[k], fpop[k], velocities[k] = self.tracingMode(task, pop_copies[k], velocities[k], xb)
+                pop_copies[k], fpop[k], velocities[k] = self.tracingMode(
+                    task, pop_copies[k], velocities[k], xb
+                )
         ib = np.argmin(fpop)
-        if fpop[ib] < fxb: xb, fxb = pop_copies[ib].copy(), fpop[ib]
-        return pop_copies, fpop, xb, fxb, {'velocities': velocities, 'modes': self.randomSeekTrace()}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3
+        if fpop[ib] < fxb:
+            xb, fxb = pop_copies[ib].copy(), fpop[ib]
+        return (
+            pop_copies,
+            fpop,
+            xb,
+            fxb,
+            {"velocities": velocities, "modes": self.randomSeekTrace()},
+        )

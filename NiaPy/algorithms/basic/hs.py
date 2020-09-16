@@ -272,5 +272,3 @@ class HarmonySearchV1(HarmonySearch):
 				  float: New bandwidth.
 		"""
 		return self.bw_min * exp(log(self.bw_min / self.bw_max) * task.Iters / task.nGEN)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

@@ -227,5 +227,3 @@ class BeesAlgorithm(Algorithm):
 		BeesPosition = BeesPosition[idxs, :]
 		ngh = ngh * 0.95
 		return BeesPosition, BeesCost, BeesPosition[0].copy(), BeesCost[0], {'ngh': ngh}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

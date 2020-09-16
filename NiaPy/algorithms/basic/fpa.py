@@ -148,5 +148,3 @@ class FlowerPollinationAlgorithm(Algorithm):
 			if f_i <= Sol_f[i]: Sol[i], Sol_f[i] = S[i], f_i
 			if f_i <= fxb: xb, fxb = S[i].copy(), f_i
 		return Sol, Sol_f, xb, fxb, {'S': S}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

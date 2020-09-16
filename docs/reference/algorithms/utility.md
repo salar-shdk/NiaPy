@@ -1,3 +1,3 @@
-# Algorithms Utility
+# Algorithm Utility
 
 ::: NiaPy.algorithms.utility

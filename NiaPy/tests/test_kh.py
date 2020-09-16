@@ -201,5 +201,3 @@ class KHV11TestCase(AlgorithmTestCase):
 		kh_griewank = self.algo(n=10, C_a=5, C_r=0.5, seed=self.seed)
 		kh_griewankc = self.algo(n=10, C_a=5, C_r=0.5, seed=self.seed)
 		AlgorithmTestCase.test_algorithm_run(self, kh_griewank, kh_griewankc)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

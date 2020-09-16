@@ -121,5 +121,3 @@ class DynNpMSDEMTSv1TestCase(AlgorithmTestCase):
 		ca_griewank = self.algo(NP=40, seed=self.seed)
 		ca_griewankc = self.algo(NP=40, seed=self.seed)
 		AlgorithmTestCase.test_algorithm_run(self, ca_griewank, ca_griewankc)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3
