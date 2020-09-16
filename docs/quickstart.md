@@ -60,3 +60,9 @@ We are trying very hard to provide you with the most convinient ways for you to 
     </div>
 
 ## Simple example
+
+In this example, let’s say, we want to try out Gray Wolf Optimizer algorithm against Sphere benchmark function. Firstly, we have to create new file, with name, for example ```basic_example.py```. Then we have to import chosen algorithm from NiaPy, so we can use it. Afterwards we initialize GreyWolfOptimizer class instance and run the algorithm. Given bellow is complete source code of this simple example together with the output of the code.
+
+{% include 'notebooks/quickstart.md.tmp' %}
+
+For more tutorials using various NiaPy features please go through [user guide](/user_guide/introduction/).

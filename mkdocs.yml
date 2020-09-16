@@ -8,11 +8,15 @@ nav:
   - Introduction: introduction.md
   - Quickstart: quickstart.md
   - User guide:
-    - Solve fist problem: user_guide/solve_first_problem.md
-    - Define custom problem: user_guide/define_first_problem.md
+    - Introduction: user_guide/introduction.md
+    - Solving fist problem: user_guide/solve_first_problem.md
+    - Obtaining algorithm information: user_guide/obtain_algo_info.md
+    - Storing improvements: user_guide/storing_improvements.md
+    - Basic statistics: user_guide/basic_statistics.md
     - Minimization/maximization problem: user_guide/min_max_problem.md
-    - Using different stopping criteria: user_guide/different_stopping_criteria.md
-    - Running multiple algorithms agains multiple problems: user_guide/runner.md
+    - Define custom problem: user_guide/define_custom_problem.md
+    - Different stopping criteria: user_guide/different_stopping_criteria.md
+    - Running multiple algorithms and benchmarks: user_guide/runner.md
   - NiaPy API reference:
     - "__init__": reference/index.md
     - Runner: reference/runner.md
@@ -41,6 +45,7 @@ nav:
   - Release notes: changelog.md
   - Code of conduct: code_of_conduct.md
   - Credits: credits.md
+
 theme:
     name: material
     custom_dir: docs/niapy_theme
@@ -63,6 +68,9 @@ extra:
 plugins:
   - search
   - progress
+  - macros
+  - mknotebooks:
+      write_markdown: true
   - mkdocstrings:
       handlers:
         python:

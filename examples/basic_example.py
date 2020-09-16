@@ -7,9 +7,9 @@ sys.path.append('../')
 from NiaPy.algorithms.basic import GreyWolfOptimizer
 from NiaPy.task import StoppingTask
 
-# we will run 10 repetitions of Grey Wolf Optimizer against Pinter benchmark function
+# we will run 10 repetitions of Grey Wolf Optimizer against Sphere benchmark function
 for i in range(10):
-    task = StoppingTask(D=10, nFES=1000, benchmark='pinter')
+    task = StoppingTask(D=10, nFES=1000, benchmark='sphere')
     algorithm = GreyWolfOptimizer(NP=20)
     best = algorithm.run(task)
     print(best[-1])
