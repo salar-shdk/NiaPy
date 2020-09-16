@@ -29,8 +29,9 @@ def Elitism(x, xpb, xb, xr, MP_c, MP_s, MP_p, F, CR, task, rnd=rand):
 
 	Returns:
 		Tuple[numpy.ndarray, float]:
-			1. New position of individual
-			2. New positions fitness/function value
+
+		1. New position of individual
+		2. New positions fitness/function value
 	"""
 	xn = [task.repair(MP_C(x, F, CR, MP_c, rnd), rnd=rnd), task.repair(MP_S(x, xr, xb, CR, MP_s, rnd), rnd=rnd), task.repair(MP_P(x, xpb, CR, MP_p, rnd), rnd=rnd)]
 	xn_f = apply_along_axis(task.eval, 1, xn)
@@ -55,8 +56,9 @@ def Sequential(x, xpb, xb, xr, MP_c, MP_s, MP_p, F, CR, task, rnd=rand):
 
 	Returns:
 		tuple[numpy.ndarray, float]:
-			1. new position
-			2. new positions function/fitness value
+
+		1. new position
+		2. new positions function/fitness value
 	"""
 	xn = task.repair(MP_S(MP_P(MP_C(x, F, CR, MP_c, rnd), xpb, CR, MP_p, rnd), xr, xb, CR, MP_s, rnd), rnd=rnd)
 	return xn, task.eval(xn)
@@ -79,8 +81,9 @@ def Crossover(x, xpb, xb, xr, MP_c, MP_s, MP_p, F, CR, task, rnd=rand):
 
 	Returns:
 		Tuple[numpy.ndarray, float]:
-			1. new position
-			2. new positions function/fitness value
+
+		1. new position
+		2. new positions function/fitness value
 	"""
 	xns = [task.repair(MP_C(x, F, CR, MP_c, rnd), rnd=rnd), task.repair(MP_S(x, xr, xb, CR, MP_s, rnd), rnd=rnd), task.repair(MP_P(x, xpb, CR, MP_p, rnd), rnd=rnd)]
 	x = asarray([xns[rnd.randint(len(xns))][i] if rnd.rand() < CR else x[i] for i in range(len(x))])
@@ -152,19 +155,15 @@ def MP_P(x, xpb, CR, MP, rnd=rand):
 class AnarchicSocietyOptimization(Algorithm):
 	r"""Implementation of Anarchic Society Optimization algorithm.
 
-	Algorithm:
-		Anarchic Society Optimization algorithm
+	Algorithm: Anarchic Society Optimization algorithm
 
-	Date:
-		2018
+	Date: 2018
 
-	Authors:
-		Klemen Berkovič
+	Authors: Klemen Berkovič
 
-	License:
-		MIT
+	License: MIT
 
-	Reference paper:
+	Reference:
 		Ahmadi-Javid, Amir. "Anarchic Society Optimization: A human-inspired method." Evolutionary Computation (CEC), 2011 IEEE Congress on. IEEE, 2011.
 
 	Attributes:
@@ -179,8 +178,8 @@ class AnarchicSocietyOptimization(Algorithm):
 		CR (float): Crossover parameter :math:`\in [0, 1]`.
 		Combination (Callable[numpy.ndarray, numpy.ndarray, numpy.ndarray, numpy.ndarray, float, float, float, float, float, float, Task, mtrand.RandomState]): Function for combining individuals to get new position/individual.
 
-	See Also:
-		* :class:`NiaPy.algorithms.Algorithm`
+	Note: See also
+		* [Algorithm](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm)
 	"""
 	Name = ['AnarchicSocietyOptimization', 'ASO']
 
@@ -191,8 +190,8 @@ class AnarchicSocietyOptimization(Algorithm):
 		Returns:
 			str: Basic information.
 
-		See Also:
-			:func:`NiaPy.algorithms.algorithm.Algorithm.algorithmInfo`
+		Note: See also
+			* [Algorith.algorithmInfo](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.algorithmInfo)
 		"""
 		return r"""Ahmadi-Javid, Amir. "Anarchic Society Optimization: A human-inspired method." Evolutionary Computation (CEC), 2011 IEEE Congress on. IEEE, 2011."""
 
@@ -202,15 +201,16 @@ class AnarchicSocietyOptimization(Algorithm):
 
 		Returns:
 			Dict[str, Callable]:
-				* alpha (Callable): TODO
-				* gamma (Callable): TODO
-				* theta (Callable): TODO
-				* nl (Callable): TODO
-				* F (Callable[[Union[float, int]], bool]): TODO
-				* CR (Callable[[Union[float, int]], bool]): TODO
 
-		See Also:
-			* :func:`NiaPy.algorithms.Algorithm.typeParameters`
+			* alpha (Callable): Check if alpha is present.
+			* gamma (Callable): Check if gamma is present.
+			* theta (Callable): Check if theta is present.
+			* nl (Callable): Check if nl is present.
+			* F (Callable[[Union[float, int]], bool]): Check if F is instance of int or float and F > 0.
+			* CR (Callable[[Union[float, int]], bool]): Check if CR is instance of float and in range 0 <= CR <= 1.
+
+		Note: See also
+			* [Algorithm.typeParameters](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.typeParameters)
 		"""
 		d = Algorithm.typeParameters()
 		d.update({
@@ -224,9 +224,9 @@ class AnarchicSocietyOptimization(Algorithm):
 		return d
 
 	def setParameters(self, NP=43, alpha=(1, 0.83), gamma=(1.17, 0.56), theta=(0.932, 0.832), d=euclidean, dn=euclidean, nl=1, F=1.2, CR=0.25, Combination=Elitism, **ukwargs):
-		r"""Set the parameters for the algorith.
+		r"""Set the parameters for the algorithm.
 
-		Arguments:
+		Attributes:
 			alpha (Optional[List[float]]): Factor for fickleness index function :math:`\in [0, 1]`.
 			gamma (Optional[List[float]]): Factor for external irregularity index function :math:`\in [0, \infty)`.
 			theta (Optional[List[float]]): Factor for internal irregularity index function :math:`\in [0, \infty)`.
@@ -237,12 +237,10 @@ class AnarchicSocietyOptimization(Algorithm):
 			CR (Optional[float]): Crossover parameter :math:`\in [0, 1]`.
 			Combination (Optional[Callable[numpy.ndarray, numpy.ndarray, numpy.ndarray, numpy.ndarray, float, float, float, float, float, float, Task, mtrand.RandomState]]): Function for combining individuals to get new position/individual.
 
-		See Also:
-			* :func:`NiaPy.algorithms.Algorithm.setParameters`
+		Note: See also
+			* [Algorithm.setParameters](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.setParameters)
 			* Combination methods:
-				* :func:`NiaPy.algorithms.other.Elitism`
-				* :func:`NiaPy.algorithms.other.Crossover`
-				* :func:`NiaPy.algorithms.other.Sequential`
+				[Elitism](#NiaPy.algorithms.other.aso.Elitism), [Crossover](#NiaPy.algorithms.other.aso.Crossover), [Sequential](#NiaPy.algorithms.other.aso.Sequential)
 		"""
 		Algorithm.setParameters(self, NP=NP, **ukwargs)
 		self.alpha, self.gamma, self.theta, self.d, self.dn, self.nl, self.F, self.CR, self.Combination = alpha, gamma, theta, d, dn, nl, F, CR, Combination
@@ -254,10 +252,11 @@ class AnarchicSocietyOptimization(Algorithm):
 			task (Task): Optimization task.
 
 		Returns:
-			Tuple[numpy.ndarray, numpy.ndarray, numpy.ndarray]
-				1. Array of `self.alpha` propagated values
-				2. Array of `self.gamma` propagated values
-				3. Array of `self.theta` propagated values
+			Tuple[numpy.ndarray, numpy.ndarray, numpy.ndarray]:
+
+			1. Array of `self.alpha` propagated values
+			2. Array of `self.gamma` propagated values
+			3. Array of `self.theta` propagated values
 		"""
 		return fullArray(self.alpha, self.NP), fullArray(self.gamma, self.NP), fullArray(self.theta, self.NP)
 
@@ -268,7 +267,7 @@ class AnarchicSocietyOptimization(Algorithm):
 			x_f (float): Individuals fitness/function value.
 			xpb_f (float): Individuals personal best fitness/function value.
 			xb_f (float): Current best found individuals fitness/function value.
-			alpha (float): TODO.
+			alpha (float): Nonnegative number in range [0, 1].
 
 		Returns:
 			float: Fickleness index.
@@ -281,7 +280,7 @@ class AnarchicSocietyOptimization(Algorithm):
 		Args:
 			x_f (float): Individuals fitness/function value.
 			xnb_f (float): Individuals new fitness/function value.
-			gamma (float): TODO.
+			gamma (float): Positive number.
 
 		Returns:
 			float: External irregularity index.
@@ -294,7 +293,7 @@ class AnarchicSocietyOptimization(Algorithm):
 		Args:
 			x_f (float): Individuals fitness/function value.
 			xpb_f (float): Individuals personal best fitness/function value.
-			theta (float): TODO.
+			theta (float): Some positive number.
 
 		Returns:
 			float: Internal irregularity index
@@ -330,10 +329,11 @@ class AnarchicSocietyOptimization(Algorithm):
 
 		Returns:
 			Tuple[numpy.ndarray, numpy.ndarray[float], numpy.ndarray, float]:
-				1. New personal best positions for current population.
-				2. New personal best positions function/fitness values for current population.
-				3. New best individual.
-				4. New best individual fitness/function value.
+
+			1. New personal best positions for current population.
+			2. New personal best positions function/fitness values for current population.
+			3. New best individual.
+			4. New best individual fitness/function value.
 		"""
 		ix_pb = where(X_f < Xpb_f)
 		Xpb[ix_pb], Xpb_f[ix_pb] = X[ix_pb], X_f[ix_pb]
@@ -347,19 +347,21 @@ class AnarchicSocietyOptimization(Algorithm):
 
 		Returns:
 			Tuple[numpy.ndarray, numpy.ndarray, dict]:
-				1. Initialized population
-				2. Initialized population fitness/function values
-				3. Dict[str, Any]:
-					* Xpb (numpy.ndarray): Initialized populations best positions.
-					* Xpb_f (numpy.ndarray): Initialized populations best positions function/fitness values.
-					* alpha (numpy.ndarray):
-					* gamma (numpy.ndarray):
-					* theta (numpy.ndarray):
-					* rs (float): Distance of search space.
 
-		See Also:
-			* :func:`NiaPy.algorithms.algorithm.Algorithm.initPopulation`
-			* :func:`NiaPy.algorithms.other.aso.AnarchicSocietyOptimization.init`
+			1. Initialized population
+			2. Initialized population fitness/function values
+			3. Dict[str, Any]:
+
+				Xpb (numpy.ndarray): Initialized populations best positions.
+				Xpb_f (numpy.ndarray): Initialized populations best positions function/fitness values.
+				alpha (numpy.ndarray): Nonnegative numbers in range [0, 1].
+				gamma (numpy.ndarray): Positive numbers.
+				theta (numpy.ndarray): Positive numbers.
+				rs (float): Distance of search space.
+
+		Note: See also
+			* [Algorithm.initPopulation](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.initPopulation)
+			* [init](#NiaPy.algorithms.other.aso.AnarchicSocietyOptimization.init)
 		"""
 		X, X_f, d = Algorithm.initPopulation(self, task)
 		alpha, gamma, theta = self.init(task)
@@ -378,24 +380,26 @@ class AnarchicSocietyOptimization(Algorithm):
 			fxb (float): Current global best individual function/fitness value.
 			Xpb (numpy.ndarray): Current populations best positions.
 			Xpb_f (numpy.ndarray): Current population best positions function/fitness values.
-			alpha (numpy.ndarray): TODO.
-			gamma (numpy.ndarray):
-			theta (numpy.ndarray):
+			alpha (numpy.ndarray): Nonnegative numbers in range [0, 1].
+			gamma (numpy.ndarray): Positive numbers.
+			theta (numpy.ndarray): Positive numbers.
 			**dparams: Additional arguments.
 
 		Returns:
 			Tuple[numpy.ndarray, numpy.ndarray, numpy.ndarray, float, dict]:
-				1. Initialized population
-				2. Initialized population fitness/function values
-				3. New global best solution
-				4. New global best solutions fitness/objective value
-				5. Dict[str, Union[float, int, numpy.ndarray]:
-					* Xpb (numpy.ndarray): Initialized populations best positions.
-					* Xpb_f (numpy.ndarray): Initialized populations best positions function/fitness values.
-					* alpha (numpy.ndarray):
-					* gamma (numpy.ndarray):
-					* theta (numpy.ndarray):
-					* rs (float): Distance of search space.
+
+			1. Initialized population
+			2. Initialized population fitness/function values
+			3. New global best solution
+			4. New global best solutions fitness/objective value
+			5. Dict[str, Union[float, int, numpy.ndarray]:
+
+					Xpb (numpy.ndarray): Initialized populations best positions.
+					Xpb_f (numpy.ndarray): Initialized populations best positions function/fitness values.
+					alpha (numpy.ndarray): Nonnegative numbers in range [0, 1].
+					gamma (numpy.ndarray): Positive numbers.
+					theta (numpy.ndarray): Positive numbers.
+					rs (float): Distance of search space.
 		"""
 		Xin = [self.getBestNeighbors(i, X, X_f, rs) for i in range(len(X))]
 		MP_c, MP_s, MP_p = asarray([self.FI(X_f[i], Xpb_f[i], fxb, alpha[i]) for i in range(len(X))]), asarray([self.EI(X_f[i], X_f[Xin[i]], gamma[i]) for i in range(len(X))]), asarray([self.II(X_f[i], Xpb_f[i], theta[i]) for i in range(len(X))])
@@ -404,5 +408,3 @@ class AnarchicSocietyOptimization(Algorithm):
 		Xpb, Xpb_f = self.uBestAndPBest(X, X_f, Xpb, Xpb_f)
 		xb, fxb = self.getBest(X, X_f, xb, fxb)
 		return X, X_f, xb, fxb, {'Xpb': Xpb, 'Xpb_f': Xpb_f, 'alpha': alpha, 'gamma': gamma, 'theta': theta, 'rs': rs}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

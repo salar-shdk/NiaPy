@@ -1,3 +1,3 @@
 # Other Algorithms
 
-<!--::: NiaPy.algorithms.other-->
+::: NiaPy.algorithms.other

@@ -4,8 +4,8 @@ from unittest import TestCase
 from numpy import full, random as rnd, inf, sum, array_equal, asarray
 
 from NiaPy.util import fullArray, limit_repair, limitInversRepair, wangRepair, randRepair, reflectRepair, FesException, GenException  # TimeException, RefException
-from NiaPy.task import Utility, StoppingTask, ThrowingTask
-from NiaPy.benchmarks import Benchmark
+from NiaPy.task import StoppingTask, ThrowingTask
+from NiaPy.benchmarks import Benchmark, BenchmarkUtility
 from NiaPy.algorithms import Algorithm, AlgorithmUtility
 from NiaPy.algorithms.basic import GreyWolfOptimizer
 
@@ -126,7 +126,7 @@ class MyBenchmark(Benchmark):
 
 class UtilityTestCase(TestCase):
 	def setUp(self):
-		self.u = Utility()
+		self.u = BenchmarkUtility()
 
 	def test_get_bad_benchmark_fine(self):
 		self.assertRaises(TypeError, lambda: self.u.get_benchmark('hihihihihihihihihi'))
@@ -400,5 +400,3 @@ class ReflectRepairTestCase(LimitRepairTestCase):
 	def setUp(self):
 		LimitRepairTestCase.setUp(self)
 		self.met = reflectRepair
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

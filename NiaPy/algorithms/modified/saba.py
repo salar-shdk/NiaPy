@@ -116,7 +116,7 @@ class AdaptiveBatAlgorithm(Algorithm):
 	def initPopulation(self, task):
 		r"""Initialize the starting population.
 
-		Parameters:
+		Attributes:
 			task (Task): Optimization task
 
 		Returns:
@@ -166,7 +166,7 @@ class AdaptiveBatAlgorithm(Algorithm):
 	def runIteration(self, task, Sol, Fitness, xb, fxb, A, S, Q, v, **dparams):
 		r"""Core function of Bat Algorithm.
 
-		Parameters:
+		Attributes:
 			task (Task): Optimization task.
 			Sol (numpy.ndarray): Current population
 			Fitness (numpy.ndarray[float]): Current population fitness/funciton values
@@ -323,7 +323,7 @@ class SelfAdaptiveBatAlgorithm(AdaptiveBatAlgorithm):
 	def runIteration(self, task, Sol, Fitness, xb, fxb, A, r, S, Q, v, **dparams):
 		r"""Core function of Bat Algorithm.
 
-		Parameters:
+		Attributes:
 			task (Task): Optimization task.
 			Sol (numpy.ndarray): Current population
 			Fitness (numpy.ndarray[float]): Current population fitness/funciton values
@@ -357,5 +357,3 @@ class SelfAdaptiveBatAlgorithm(AdaptiveBatAlgorithm):
 			if (Fnew <= Fitness[i]) and (self.rand() < (self.A_l - A[i]) / self.A): Sol[i], Fitness[i] = S[i], Fnew
 			if Fnew <= fxb: xb, fxb = S[i].copy(), Fnew
 		return Sol, Fitness, xb, fxb, {'A': A, 'r': r, 'S': S, 'Q': Q, 'v': v}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

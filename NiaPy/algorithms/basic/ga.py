@@ -290,5 +290,3 @@ class GeneticAlgorithm(Algorithm):
 			npop[i] = ind
 			if npop[i].f < fxb: xb, fxb = self.getBest(npop[i], npop[i].f, xb, fxb)
 		return npop, asarray([i.f for i in npop]), xb, fxb, {}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

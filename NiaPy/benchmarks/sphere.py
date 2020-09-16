@@ -240,5 +240,3 @@ class Sphere3(Benchmark):
 				val += v
 			return val
 		return evaluate
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

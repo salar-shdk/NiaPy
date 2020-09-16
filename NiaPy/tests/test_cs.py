@@ -16,5 +16,3 @@ class CSTestCase(AlgorithmTestCase):
 		cs_griewank = self.algo(NP=10, seed=self.seed)
 		cs_griewankc = self.algo(NP=10, seed=self.seed)
 		AlgorithmTestCase.test_algorithm_run(self, cs_griewank, cs_griewankc)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

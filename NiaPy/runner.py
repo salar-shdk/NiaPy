@@ -21,8 +21,7 @@ __all__ = ["Runner"]
 
 
 class Runner:
-    r"""
-    Runner utility feature class.
+    r"""Runner utility feature class.
 
     Feature which enables running multiple algorithms with multiple benchmarks.
     It also support exporting results in various formats (e.g. Pandas DataFrame, JSON, Excel)
@@ -173,8 +172,7 @@ class Runner:
         logger.info("Export to XLSX file completed!")
 
     def run(self, export="dataframe", verbose=False):
-        """
-        Execute runner.
+        """Execute runner.
 
         Arguments:
             export (str): Takes export type (e.g. dataframe, json, xls, xlsx)

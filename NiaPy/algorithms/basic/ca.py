@@ -330,5 +330,3 @@ class CamelAlgorithm(Algorithm):
 		fncaravan = asarray([c.f for c in ncaravan])
 		cb, fcb = self.getBest(ncaravan, fncaravan, cb, fcb)
 		return ncaravan, fncaravan, cb, fcb, {}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

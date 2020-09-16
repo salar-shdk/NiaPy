@@ -354,5 +354,3 @@ class FishSchoolSearch(Algorithm):
 		school, xb, fxb = self.collective_volitive_movement(school=school, curr_step_volitive=curr_step_volitive, prev_weight_school=prev_weight_school, curr_weight_school=curr_weight_school, xb=xb, fxb=fxb, task=task)
 		curr_step_individual, curr_step_volitive = self.update_steps(task)
 		return school, asarray([f.f for f in school]), xb, fxb, {'curr_step_individual': curr_step_individual, 'curr_step_volitive': curr_step_volitive, 'curr_weight_school': curr_weight_school, 'prev_weight_school': prev_weight_school}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

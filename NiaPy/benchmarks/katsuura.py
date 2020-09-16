@@ -85,5 +85,3 @@ class Katsuura(Benchmark):
 				val *= (1 + (i + 1) * valt) ** (10 / D ** 1.2) - (10 / D ** 2)
 			return 10 / D ** 2 * val
 		return f
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

@@ -14,20 +14,15 @@ __all__ = ['NelderMeadMethod']
 class NelderMeadMethod(Algorithm):
 	r"""Implementation of Nelder Mead method or downhill simplex method or amoeba method.
 
-	Algorithm:
-		Nelder Mead Method
+	Algorithm: Nelder Mead Method
 
-	Date:
-		2018
+	Date: 2018
 
-	Authors:
-		Klemen Berkovič
+	Authors: Klemen Berkovič
 
-	License:
-		MIT
+	License: MIT
 
-	Reference URL:
-		https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method
+	Reference URL: https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method
 
 	Attributes:
 		Name (List[str]): list of strings represeing algorithm name
@@ -36,8 +31,8 @@ class NelderMeadMethod(Algorithm):
 		rho (float): Contraction coefficient parameter
 		sigma (float): Shrink coefficient parameter
 
-	See Also:
-		* :class:`NiaPy.algorithms.Algorithm`
+	Note: See also
+		* [Algorithm](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm)
 	"""
 	Name = ['NelderMeadMethod', 'NMM']
 
@@ -48,10 +43,10 @@ class NelderMeadMethod(Algorithm):
 		Returns:
 			str: Basic information of algorithm.
 
-		See Also:
-			* :func:`NiaPy.algorithms.Algorithm.algorithmInfo`
+		Note: See also
+			* [Algorith.algorithmInfo](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.algorithmInfo)
 		"""
-		return r"""No info"""
+		return r"""Nelder Mead Method."""
 
 	@staticmethod
 	def typeParameters():
@@ -59,13 +54,13 @@ class NelderMeadMethod(Algorithm):
 
 		Returns:
 			Dict[str, Callable]:
-				* alpha (Callable[[Union[int, float]], bool])
-				* gamma (Callable[[Union[int, float]], bool])
-				* rho (Callable[[Union[int, float]], bool])
-				* sigma (Callable[[Union[int, float]], bool])
+				* alpha (Callable[[Union[int, float]], bool]): Check if alpha is instance of int or float and if alpha >= 0.
+				* gamma (Callable[[Union[int, float]], bool]): Check if gamma is instance of int or float and if gamma >= 0.
+				* rho (Callable[[Union[int, float]], bool]): Check if rho is instance of int or float.
+				* sigma (Callable[[Union[int, float]], bool]): Check if sigma is instance of int or float.
 
-		See Also
-			* :func:`NiaPy.algorithms.Algorithm.typeParameters`
+		Note: See also
+			* [Algorithm.typeParameters](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.typeParameters)
 		"""
 		d = Algorithm.typeParameters()
 		d.update({
@@ -86,8 +81,8 @@ class NelderMeadMethod(Algorithm):
 			rho (Optional[float]): Contraction coefficient parameter
 			sigma (Optional[float]): Shrink coefficient parameter
 
-		See Also:
-			* :func:`NiaPy.algorithms.Algorithm.setParameters`
+		Note: See also
+			* [Algorithm.setParameters](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.setParameters)
 		"""
 		Algorithm.setParameters(self, NP=NP, InitPopFunc=ukwargs.pop('InitPopFunc', self.initPop), **ukwargs)
 		self.alpha, self.gamma, self.rho, self.sigma = alpha, gamma, rho, sigma
@@ -113,8 +108,9 @@ class NelderMeadMethod(Algorithm):
 
 		Returns:
 			Tuple[numpy.ndarray, numpy.ndarray[float]]:
-				1. New initialized population.
-				2. New initialized population fitness/function values.
+
+			1. New initialized population.
+			2. New initialized population fitness/function values.
 		"""
 		X = self.uniform(task.Lower, task.Upper, [task.D if NP is None or NP < task.D else NP, task.D])
 		X_f = apply_along_axis(task.eval, 1, X)
@@ -130,8 +126,9 @@ class NelderMeadMethod(Algorithm):
 
 		Returns:
 			Tuple[numpy.ndarray, numpy.ndarray[float]]:
-				1. New population.
-				2. New population fitness/function values.
+
+			1. New population.
+			2. New population fitness/function values.
 		"""
 		x0 = sum(X[:-1], axis=0) / (len(X) - 1)
 		xr = x0 + self.alpha * (x0 - X[-1])
@@ -168,16 +165,15 @@ class NelderMeadMethod(Algorithm):
 
 		Returns:
 			Tuple[numpy.ndarray, numpy.ndarray, numpy.ndarray, float, Dict[str, Any]]:
-				1. New population.
-				2. New population fitness/function values.
-				3. New global best solution
-				4. New global best solutions fitness/objective value
-				5. Additional arguments.
+
+			1. New population.
+			2. New population fitness/function values.
+			3. New global best solution
+			4. New global best solutions fitness/objective value
+			5. Additional arguments.
 		"""
 		inds = argsort(X_f)
 		X, X_f = X[inds], X_f[inds]
 		X, X_f = self.method(X, X_f, task)
 		xb, fxb = self.getBest(X, X_f, xb, fxb)
 		return X, X_f, xb, fxb, {}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

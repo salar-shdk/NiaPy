@@ -286,5 +286,3 @@ class CoralReefsOptimization(Algorithm):
 		Reef, Reef_f, xb, fxb = self.asexualReprodution(Reefn, Reefn_f, xb, fxb, task)
 		if task.Iters % self.k == 0: Reef, Reef_f = self.depredation(Reef, Reef_f)
 		return Reef, Reef_f, xb, fxb, {}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

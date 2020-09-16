@@ -38,6 +38,7 @@ from NiaPy.benchmarks.powell import Powell
 from NiaPy.benchmarks.cosinemixture import CosineMixture
 from NiaPy.benchmarks.infinity import Infinity
 from NiaPy.benchmarks.schaffer import SchafferN2, SchafferN4, ExpandedSchaffer
+from NiaPy.benchmarks.utility import BenchmarkUtility
 
 __all__ = [
     'Benchmark',
@@ -89,5 +90,6 @@ __all__ = [
     'Infinity',
     'ExpandedSchaffer',
     'SchafferN2',
-    'SchafferN4'
+    'SchafferN4',
+    'BenchmarkUtility'
 ]

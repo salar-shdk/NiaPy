@@ -131,5 +131,3 @@ class CMAESTestCase(AlgorithmTestCase):
 		es1_griewank = self.algo(seed=self.seed)
 		es1_griewankc = self.algo(seed=self.seed)
 		AlgorithmTestCase.test_algorithm_run(self, es1_griewank, es1_griewankc)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

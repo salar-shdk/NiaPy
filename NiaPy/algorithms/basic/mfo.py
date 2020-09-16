@@ -148,5 +148,3 @@ class MothFlameOptimizer(Algorithm):
 		for newIdx in range(2 * self.NP): double_sorted_population[newIdx] = array(double_population[indexes[newIdx], :])
 		best_flame_fitness, best_flames = double_sorted_fitness[:self.NP], double_sorted_population[:self.NP]
 		return moth_pos, moth_fitness, xb, fxb, {'best_flames': best_flames, 'best_flame_fitness': best_flame_fitness, 'previous_population': previous_population, 'previous_fitness': previous_fitness}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

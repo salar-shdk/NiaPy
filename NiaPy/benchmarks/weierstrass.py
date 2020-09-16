@@ -97,5 +97,3 @@ class Weierstrass(Benchmark):
 			for k in range(k_max): val2 += a ** k * cos(2 * pi * b ** k * 0.5)
 			return val1 - D * val2
 		return f
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

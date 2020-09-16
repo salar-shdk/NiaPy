@@ -148,5 +148,3 @@ class ANpMsDETestCase(AlgorithmTestCase):
 		de_griewank = self.algo(NP=10, CR=0.5, F=0.9, seed=self.seed)
 		de_griewankc = self.algo(NP=10, CR=0.5, F=0.9, seed=self.seed)
 		AlgorithmTestCase.test_algorithm_run(self, de_griewank, de_griewankc, 'griewank')
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

@@ -88,5 +88,3 @@ class Michalewichz(Benchmark):
 			for i in range(D): v += sin(X[i]) * sin(((i + 1) * X[i] ** 2) / pi) ** (2 * cls.m)
 			return -v
 		return evaluate
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3
