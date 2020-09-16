@@ -12,4 +12,4 @@ much information as possible.**
 
 ## Reporting bugs
 
-Check out how to Report bugs in our [Contributing to NiaPy]() guide.
+Check out how to Report bugs in our [Contributing to NiaPy](developer_guide/contributing/) guide.

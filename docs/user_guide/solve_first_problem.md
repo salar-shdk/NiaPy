@@ -1,1 +1,1 @@
-# Solve first problem
+{% include 'notebooks/solve_first_problem.md.tmp' %}
