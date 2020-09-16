@@ -305,5 +305,3 @@ class CLPSOTestCase(AlgorithmTestCase):
 		clpso_griewank = self.algo(NP=40, C1=2.0, C2=2.0, w=0.7, vMin=-4, vMax=4, seed=self.seed)
 		clpso_griewankc = self.algo(NP=40, C1=2.0, C2=2.0, w=0.7, vMin=-4, vMax=4, seed=self.seed)
 		AlgorithmTestCase.test_algorithm_run(self, clpso_griewank, clpso_griewankc)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

@@ -2,8 +2,9 @@
 
 from math import pow
 from unittest import TestCase
-from numpy import asarray, pi, full, seterr
-from NiaPy.task import Utility
+from numpy import asarray, pi, full
+
+from NiaPy.benchmarks import BenchmarkUtility
 
 
 class TestBenchmarkFunctions(TestCase):
@@ -36,7 +37,7 @@ class TestBenchmarkFunctions(TestCase):
             [fun]: Returns benchmarks evaluation function.
         """
 
-        b = Utility().get_benchmark(bench)
+        b = BenchmarkUtility().get_benchmark(bench)
         self.assertEqual(b.Lower, lower)
         self.assertEqual(b.Upper, upper)
         return b.function()
@@ -44,7 +45,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_rastrigin(self):
         """Test the rastrigin benchmark."""
 
-        rastrigin = Utility().get_benchmark('rastrigin')
+        rastrigin = BenchmarkUtility().get_benchmark('rastrigin')
         fun = rastrigin.function()
         self.assertTrue(callable(fun))
         self.assertEqual(fun(self.D, self.array), 0.0)
@@ -52,7 +53,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_rosenbrock(self):
         """Test the rosenbrock benchmark."""
 
-        rosenbrock = Utility().get_benchmark('rosenbrock')
+        rosenbrock = BenchmarkUtility().get_benchmark('rosenbrock')
         fun = rosenbrock.function()
         self.assertTrue(callable(fun))
         self.assertEqual(fun(self.D, self.array2), 0.0)
@@ -60,7 +61,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_griewank(self):
         """Test the griewank benchmark."""
 
-        griewank = Utility().get_benchmark('griewank')
+        griewank = BenchmarkUtility().get_benchmark('griewank')
         fun = griewank.function()
         self.assertTrue(callable(fun))
         self.assertEqual(fun(self.D, self.array), 0.0)
@@ -68,7 +69,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_sphere(self):
         """Test the sphere benchmark."""
 
-        sphere = Utility().get_benchmark('sphere')
+        sphere = BenchmarkUtility().get_benchmark('sphere')
         fun = sphere.function()
         self.assertTrue(callable(fun))
         self.assertEqual(fun(self.D, self.array), 0.0)
@@ -76,7 +77,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_ackley(self):
         """Test the ackley benchmark."""
 
-        ackley = Utility().get_benchmark('ackley')
+        ackley = BenchmarkUtility().get_benchmark('ackley')
         fun = ackley.function()
         self.assertTrue(callable(fun))
         self.assertAlmostEqual(fun(self.D, self.array), 0.0, places=10)
@@ -84,7 +85,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_schwefel(self):
         """Test the schwefel benchmark."""
 
-        schwefel = Utility().get_benchmark('schwefel')
+        schwefel = BenchmarkUtility().get_benchmark('schwefel')
         fun = schwefel.function()
         self.assertTrue(callable(fun))
         self.assertAlmostEqual(fun(self.D, self.array3), 0.0, places=3)
@@ -92,7 +93,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_schwefel221(self):
         """Test the schwefel 221 benchmark."""
 
-        schwefel221 = Utility().get_benchmark('schwefel221')
+        schwefel221 = BenchmarkUtility().get_benchmark('schwefel221')
         fun = schwefel221.function()
         self.assertTrue(callable(fun))
         self.assertEqual(fun(self.D, self.array), 0.0)
@@ -100,7 +101,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_schwefel222(self):
         """Test the schwefel 222 benchmark."""
 
-        schwefel222 = Utility().get_benchmark('schwefel222')
+        schwefel222 = BenchmarkUtility().get_benchmark('schwefel222')
         fun = schwefel222.function()
         self.assertTrue(callable(fun))
         self.assertEqual(fun(self.D, self.array), 0.0)
@@ -108,7 +109,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_whitley(self):
         """Test the whitley benchmark."""
 
-        whitley = Utility().get_benchmark('whitley')
+        whitley = BenchmarkUtility().get_benchmark('whitley')
         fun = whitley.function()
         self.assertTrue(callable(fun))
         self.assertEqual(fun(self.D, self.array2), 0.0)
@@ -116,7 +117,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_styblinskiTang(self):
         """Test the styblinski tang benchmark."""
 
-        styblinskiTang = Utility().get_benchmark('styblinskiTang')
+        styblinskiTang = BenchmarkUtility().get_benchmark('styblinskiTang')
         fun = styblinskiTang.function()
         self.assertTrue(callable(fun))
         self.assertAlmostEqual(fun(2, self.array4), -78.332, places=3)
@@ -124,7 +125,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_sumSquares(self):
         """Test the sum squares benchmark."""
 
-        sumSquares = Utility().get_benchmark('sumSquares')
+        sumSquares = BenchmarkUtility().get_benchmark('sumSquares')
         fun = sumSquares.function()
         self.assertTrue(callable(fun))
         self.assertEqual(fun(self.D, self.array), 0.0)
@@ -132,7 +133,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_stepint(self):
         """Test the stepint benchmark."""
 
-        stepint = Utility().get_benchmark('stepint')
+        stepint = BenchmarkUtility().get_benchmark('stepint')
         fun = stepint.function()
         self.assertTrue(callable(fun))
         self.assertEqual(fun(self.D, self.array9), 25.0 - 6 * self.D)
@@ -140,7 +141,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_step(self):
         """Test the step benchmark."""
 
-        step = Utility().get_benchmark('step')
+        step = BenchmarkUtility().get_benchmark('step')
         fun = step.function()
         self.assertTrue(callable(fun))
         self.assertEqual(fun(self.D, self.array), 0.0)
@@ -148,7 +149,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_step2(self):
         """Test the step 2 benchmark."""
 
-        step2 = Utility().get_benchmark('step2')
+        step2 = BenchmarkUtility().get_benchmark('step2')
         fun = step2.function()
         self.assertTrue(callable(fun))
         self.assertEqual(fun(self.D, self.array5), 0.0)
@@ -156,7 +157,7 @@ class TestBenchmarkFunctions(TestCase):
     def test_step3(self):
         """Test the step3 benchmark."""
 
-        step3 = Utility().get_benchmark('step3')
+        step3 = BenchmarkUtility().get_benchmark('step3')
         fun = step3.function()
         self.assertTrue(callable(fun))
         self.assertEqual(fun(self.D, self.array), 0.0)

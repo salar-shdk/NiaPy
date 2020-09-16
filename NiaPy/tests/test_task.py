@@ -283,5 +283,3 @@ class ThrowingTaskTestCase(TestCase):
 		x = full(self.D, 0.0)
 		self.assertEqual(0, self.t.eval(x))
 		self.assertRaises(RefException, lambda: self.t.eval(x))
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

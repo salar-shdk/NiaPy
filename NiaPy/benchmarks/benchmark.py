@@ -1,6 +1,6 @@
 # encoding=utf8
 
-"""Implementation of benchmarks utility function."""
+"""Implementation of benchmarks parent class."""
 
 import logging
 from numpy import inf, arange, meshgrid, vectorize
@@ -15,18 +15,15 @@ logger.setLevel('INFO')
 __all__ = ['Benchmark']
 
 class Benchmark:
-	r"""
-	Class representing benchmarks.
-	"""
+	r"""Class representing benchmarks."""
 
 	Name = ['Benchmark', 'BBB']
 	"""List[str]: List of names representiong benchmark names."""
 
 	def __init__(self, Lower, Upper, **kwargs):
-		r"""
-		Initialize benchmark.
+		r"""Initialize benchmark.
 
-		Args:
+		Arguments:
 			Lower (Union[int, float, list, numpy.ndarray]): Lower bounds.
 			Upper (Union[int, float, list, numpy.ndarray]): Upper bounds.
 			**kwargs (Dict[str, Any]): Additional arguments.
@@ -35,8 +32,7 @@ class Benchmark:
 
 	@staticmethod
 	def latex_code():
-		r"""
-		Return the latex code of the problem.
+		r"""Return the latex code of the problem.
 
 		Returns:
 			str: Latex code
@@ -44,15 +40,13 @@ class Benchmark:
 		return r'''$f(x) = \infty$'''
 
 	def function(self):
-		r"""
-		Get the optimization function.
+		r"""Get the optimization function.
 
 		Returns:
 			Callable[[int, Union[list, numpy.ndarray]], float]: Fitness funciton.
 		"""
 		def fun(D, X):
-			r"""
-			Initialize benchmark.
+			r"""Initialize benchmark.
 
 			Args:
 				D (int): Dimesionality of the problem.
@@ -65,8 +59,7 @@ class Benchmark:
 		return fun
 
 	def __call__(self):
-		r"""
-		Get the optimization function.
+		r"""Get the optimization function.
 
 		Returns:
 			Callable[[int, Union[list, numpy.ndarray]], float]: Fitness funciton.
@@ -78,8 +71,7 @@ class Benchmark:
 		pass
 
 	def __2dfun(self, x, y, f):
-		r"""
-		Calculate function value.
+		r"""Calculate function value.
 
 		Args:
 			x (float): First coordinate.

@@ -34,5 +34,3 @@ class BenchmarkTestCase(TestCase):
 	def test_call_operator_fine(self):
 		f = self.b()
 		self.assertIsNotNone(f)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

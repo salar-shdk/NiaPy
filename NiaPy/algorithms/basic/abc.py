@@ -21,7 +21,7 @@ class SolutionABC(Individual):
 	Author:
 		Klemen Berkovič
 
-	Note
+	Note:
 		See also the `NiaPy.algorithms.Individual`
 	"""
 	def __init__(self, **kargs):
@@ -94,7 +94,7 @@ class ArtificialBeeColonyAlgorithm(Algorithm):
 	def setParameters(self, NP=10, Limit=100, **ukwargs):
 		r"""Set the parameters of Artificial Bee Colony Algorithm.
 
-		Parameters:
+		Attributes:
 			Limit (Optional[Union[float, numpy.ndarray[float]]]): Limt
 			**ukwargs (Dict[str, Any]): Additional arguments
 
@@ -107,7 +107,7 @@ class ArtificialBeeColonyAlgorithm(Algorithm):
 	def CalculateProbs(self, Foods, Probs):
 		r"""Calculate the probes.
 
-		Parameters:
+		Attributes:
 			Foods (numpy.ndarray): TODO
 			Probs (numpy.ndarray): TODO
 
@@ -122,7 +122,7 @@ class ArtificialBeeColonyAlgorithm(Algorithm):
 	def initPopulation(self, task):
 		r"""Initialize the starting population.
 
-		Parameters:
+		Attributes:
 			task (Task): Optimization task
 
 		Returns:
@@ -143,7 +143,7 @@ class ArtificialBeeColonyAlgorithm(Algorithm):
 	def runIteration(self, task, Foods, fpop, xb, fxb, Probs, Trial, **dparams):
 		r"""Core funciton of  the algorithm.
 
-		Parameters:
+		Attributes:
 			task (Task): Optimization task
 			Foods (numpy.ndarray): Current population
 			fpop (numpy.ndarray[float]): Function/fitness values of current population

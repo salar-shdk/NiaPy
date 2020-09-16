@@ -9,8 +9,7 @@ from NiaPy.algorithms import other as other_algorithms
 
 
 class AlgorithmUtility:
-    r"""
-    Base class with string mappings to algorithms.
+    r"""Base class with string mappings to algorithms.
 
     !!! example
 
@@ -22,7 +21,7 @@ class AlgorithmUtility:
     """
 
     def __init__(self):
-        r"""Initialize the algorithms utility."""
+        r"""Initialize the algorithm utility."""
 
         self.algorithm_classes = {
             "BatAlgorithm": basic_algorithms.BatAlgorithm,

@@ -31,12 +31,13 @@ def MTS_LS1(Xk, Xk_fit, Xb, Xb_fit, improve, SR, task, BONUS1=10, BONUS2=1, sr_f
 
 	Returns:
 		Tuple[numpy.ndarray, float, numpy.ndarray, float, bool, numpy.ndarray]:
-			1. New solution.
-			2. New solutions fitness/function value.
-			3. Global best if found else old global best.
-			4. Global bests function/fitness value.
-			5. If solution has improved.
-			6. Search range.
+
+		1. New solution.
+		2. New solutions fitness/function value.
+		3. Global best if found else old global best.
+		4. Global bests function/fitness value.
+		5. If solution has improved.
+		6. Search range.
 	"""
 	if not improve:
 		SR /= 2
@@ -79,12 +80,13 @@ def MTS_LS1v1(Xk, Xk_fit, Xb, Xb_fit, improve, SR, task, BONUS1=10, BONUS2=1, sr
 
 	Returns:
 		Tuple[numpy.ndarray, float, numpy.ndarray, float, bool, numpy.ndarray]:
-			1. New solution.
-			2. New solutions fitness/function value.
-			3. Global best if found else old global best.
-			4. Global bests function/fitness value.
-			5. If solution has improved.
-			6. Search range.
+
+		1. New solution.
+		2. New solutions fitness/function value.
+		3. Global best if found else old global best.
+		4. Global bests function/fitness value.
+		5. If solution has improved.
+		6. Search range.
 	"""
 	if not improve:
 		SR /= 2
@@ -142,15 +144,16 @@ def MTS_LS2(Xk, Xk_fit, Xb, Xb_fit, improve, SR, task, BONUS1=10, BONUS2=1, sr_f
 
 	Returns:
 		Tuple[numpy.ndarray, float, numpy.ndarray, float, bool, numpy.ndarray]:
-			1. New solution.
-			2. New solutions fitness/function value.
-			3. Global best if found else old global best.
-			4. Global bests function/fitness value.
-			5. If solution has improved.
-			6. Search range.
 
-	See Also:
-		* :func:`NiaPy.algorithms.other.genNewX`
+		1. New solution.
+		2. New solutions fitness/function value.
+		3. Global best if found else old global best.
+		4. Global bests function/fitness value.
+		5. If solution has improved.
+		6. Search range.
+
+	Note: See also
+		* [genNewX](#NiaPy.algorithms.other.mts.genNewX)
 	"""
 	if not improve:
 		SR /= 2
@@ -190,12 +193,13 @@ def MTS_LS3(Xk, Xk_fit, Xb, Xb_fit, improve, SR, task, BONUS1=10, BONUS2=1, rnd=
 
 	Returns:
 		Tuple[numpy.ndarray, float, numpy.ndarray, float, bool, numpy.ndarray]:
-			1. New solution.
-			2. New solutions fitness/function value.
-			3. Global best if found else old global best.
-			4. Global bests function/fitness value.
-			5. If solution has improved.
-			6. Search range.
+
+		1. New solution.
+		2. New solutions fitness/function value.
+		3. Global best if found else old global best.
+		4. Global bests function/fitness value.
+		5. If solution has improved.
+		6. Search range.
 	"""
 	Xk_new, grade = copy(Xk), 0.0
 	for i in range(len(Xk)):
@@ -239,12 +243,13 @@ def MTS_LS3v1(Xk, Xk_fit, Xb, Xb_fit, improve, SR, task, phi=3, BONUS1=10, BONUS
 
 	Returns:
 		Tuple[numpy.ndarray, float, numpy.ndarray, float, bool, numpy.ndarray]:
-			1. New solution.
-			2. New solutions fitness/function value.
-			3. Global best if found else old global best.
-			4. Global bests function/fitness value.
-			5. If solution has improved.
-			6. Search range.
+
+		1. New solution.
+		2. New solutions fitness/function value.
+		3. Global best if found else old global best.
+		4. Global bests function/fitness value.
+		5. If solution has improved.
+		6. Search range.
 	"""
 	grade, Disp = 0.0, task.bRange / 10
 	while True in (Disp > 1e-3):
@@ -265,22 +270,17 @@ def MTS_LS3v1(Xk, Xk_fit, Xb, Xb_fit, improve, SR, task, phi=3, BONUS1=10, BONUS
 class MultipleTrajectorySearch(Algorithm):
 	r"""Implementation of Multiple trajectory search.
 
-	Algorithm:
-		Multiple trajectory search
+	Algorithm: Multiple trajectory search
 
-	Date:
-		2018
+	Date: 2018
 
-	Authors:
-		Klemen Berkovic
+	Authors: Klemen Berkovic
 
-	License:
-		MIT
+	License: MIT
 
-	Reference URL:
-		https://ieeexplore.ieee.org/document/4631210/
+	Reference URL: https://ieeexplore.ieee.org/document/4631210/
 
-	Reference paper:
+	Reference:
 		Lin-Yu Tseng and Chun Chen, "Multiple trajectory search for Large Scale Global Optimization," 2008 IEEE Congress on Evolutionary Computation (IEEE World Congress on Computational Intelligence), Hong Kong, 2008, pp. 3052-3059. doi: 10.1109/CEC.2008.4631210
 
 	Attributes:
@@ -293,8 +293,8 @@ class MultipleTrajectorySearch(Algorithm):
 		NoLsBest (int): Number of locals search algorithm runs on best solution.
 		NoEnabled (int): Number of best solution for testing.
 
-	See Also:
-		* :class:`NiaPy.algorithms.Algorithm`
+	Note: See also
+		* [Algorithm](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm)
 	"""
 	Name = ['MultipleTrajectorySearch', 'MTS']
 
@@ -305,8 +305,8 @@ class MultipleTrajectorySearch(Algorithm):
 		Returns:
 			str: Basic information of algorithm.
 
-		See Also:
-			* :func:`NiaPy.algorithms.Algorithm.algorithmInfo`
+		Note: See also
+			* [Algorith.algorithmInfo](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.algorithmInfo)
 		"""
 		return r"""Lin-Yu Tseng and Chun Chen, "Multiple trajectory search for Large Scale Global Optimization," 2008 IEEE Congress on Evolutionary Computation (IEEE World Congress on Computational Intelligence), Hong Kong, 2008, pp. 3052-3059. doi: 10.1109/CEC.2008.4631210"""
 
@@ -316,13 +316,13 @@ class MultipleTrajectorySearch(Algorithm):
 
 		Returns:
 			Dict[str, Callable]:
-				* M (Callable[[int], bool])
-				* NoLsTests (Callable[[int], bool])
-				* NoLs (Callable[[int], bool])
-				* NoLsBest (Callable[[int], bool])
-				* NoEnabled (Callable[[int], bool])
-				* BONUS1 (Callable([[Union[int, float], bool])
-				* BONUS2 (Callable([[Union[int, float], bool])
+				* M (Callable[[int], bool]): Check if M is instance of int and if M is > 0.
+				* NoLsTests (Callable[[int], bool]): Check if NoLsTests is instance of int and if NoLsTests >=0.
+				* NoLs (Callable[[int], bool]): Check if NoLs is instance of int and if NoLs >= 0.
+				* NoLsBest (Callable[[int], bool]): Check if NoLsBest is instance of int and if NoLsBest >= 0.
+				* NoEnabled (Callable[[int], bool]): Check if NoEnabled is instance of int and if NoEnabled > 0.
+				* BONUS1 (Callable([[Union[int, float], bool]): Check if BONUS1 is instance of int or float and if BONUS1 > 0.
+				* BONUS2 (Callable([[Union[int, float], bool]): Check if BONUS2 is instance of int or float and if BONUS2 > 0.
 		"""
 		return {
 			'M': lambda x: isinstance(x, int) and x > 0,
@@ -347,8 +347,8 @@ class MultipleTrajectorySearch(Algorithm):
 			BONUS2 (int): Bonus for improving self.
 			LSs (Iterable[Callable[[numpy.ndarray, float, numpy.ndarray, float, bool, numpy.ndarray, Task, Dict[str, Any]], Tuple[numpy.ndarray, float, numpy.ndarray, float, bool, int, numpy.ndarray]]]): Local searches to use.
 
-		See Also:
-			* :func:`NiaPy.algorithms.Algorithm.setParameters`
+		Note: See also
+			* [Algorithm.setParameters](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.setParameters)
 		"""
 		Algorithm.setParameters(self, NP=ukwargs.pop('NP', M), **ukwargs)
 		self.NoLsTests, self.NoLs, self.NoLsBest, self.NoEnabled, self.BONUS1, self.BONUS2 = NoLsTests, NoLs, NoLsBest, NoEnabled, BONUS1, BONUS2
@@ -387,10 +387,11 @@ class MultipleTrajectorySearch(Algorithm):
 
 		Returns:
 			Tuple[numpy.ndarray, float, numpy.ndarray, float]:
-				1. New solution.
-				2. New solutions function/fitness value.
-				3. Global best solution.
-				4. Global best solutions fitness/function value.
+
+			1. New solution.
+			2. New solutions function/fitness value.
+			3. Global best solution.
+			4. Global best solutions fitness/function value.
 		"""
 		ls_grades, Xn = full(3, 0.0), [[x, x_f]] * len(self.LSs)
 		for k in range(len(self.LSs)):
@@ -416,12 +417,13 @@ class MultipleTrajectorySearch(Algorithm):
 
 		Returns:
 			Tuple[numpy.ndarray, float, numpy.ndarray, float, bool, numpy.ndarray, int]:
-				1. New best solution found.
-				2. New best solutions found function/fitness value.
-				3. Global best solution.
-				4. Global best solutions function/fitness value.
-				5. If the solution has improved.
-				6. Grade of local search run.
+
+			1. New best solution found.
+			2. New best solutions found function/fitness value.
+			3. Global best solution.
+			4. Global best solutions function/fitness value.
+			5. If the solution has improved.
+			6. Grade of local search run.
 		"""
 		for _j in range(self.NoLs):
 			x, x_f, xb, fxb, improve, grade, SR = self.LSs[k](x, x_f, xb, fxb, improve, SR, task, BONUS1=self.BONUS1, BONUS2=self.BONUS2, rnd=self.Rand)
@@ -436,13 +438,15 @@ class MultipleTrajectorySearch(Algorithm):
 
 		Returns:
 			Tuple[numpy.ndarray, numpy.ndarray, Dict[str, Any]]:
-				1. Initialized population.
-				2. Initialized populations function/fitness value.
-				3. Additional arguments:
-					* enable (numpy.ndarray): If solution/individual is enabled.
-					* improve (numpy.ndarray): If solution/individual is improved.
-					* SR (numpy.ndarray): Search range.
-					* grades (numpy.ndarray): Grade of solution/individual.
+
+			1. Initialized population.
+			2. Initialized populations function/fitness value.
+			3. Additional arguments:
+
+				enable (numpy.ndarray): If solution/individual is enabled.
+				improve (numpy.ndarray): If solution/individual is improved.
+				SR (numpy.ndarray): Search range.
+				grades (numpy.ndarray): Grade of solution/individual.
 		"""
 		X, X_f, d = Algorithm.initPopulation(self, task)
 		enable, improve, SR, grades = full(self.NP, True), full(self.NP, True), full([self.NP, task.D], task.bRange / 2), full(self.NP, 0.0)
@@ -471,15 +475,17 @@ class MultipleTrajectorySearch(Algorithm):
 
 		Returns:
 			Tuple[numpy.ndarray, numpy.ndarray, numpy.ndarray, float, Dict[str, Any]]:
-				1. Initialized population.
-				2. Initialized populations function/fitness value.
-				3. New global best solution.
-				4. New global best solutions fitness/objective value.
-				5. Additional arguments:
-					* enable (numpy.ndarray): If solution/individual is enabled.
-					* improve (numpy.ndarray): If solution/individual is improved.
-					* SR (numpy.ndarray): Search range.
-					* grades (numpy.ndarray): Grade of solution/individual.
+
+			1. Initialized population.
+			2. Initialized populations function/fitness value.
+			3. New global best solution.
+			4. New global best solutions fitness/objective value.
+			5. Additional arguments:
+
+				enable (numpy.ndarray): If solution/individual is enabled.
+				improve (numpy.ndarray): If solution/individual is improved.
+				SR (numpy.ndarray): Search range.
+				grades (numpy.ndarray): Grade of solution/individual.
 		"""
 		for i in range(len(X)):
 			if not enable[i]: continue
@@ -493,29 +499,24 @@ class MultipleTrajectorySearch(Algorithm):
 class MultipleTrajectorySearchV1(MultipleTrajectorySearch):
 	r"""Implementation of Multiple trajectory search.
 
-	Algorithm:
-		Multiple trajectory search
+	Algorithm: Multiple trajectory search
 
-	Date:
-		2018
+	Date: 2018
 
-	Authors:
-		Klemen Berkovic
+	Authors: Klemen Berkovic
 
-	License:
-		MIT
+	License: MIT
 
-	Reference URL:
-		https://ieeexplore.ieee.org/document/4983179/
+	Reference URL: https://ieeexplore.ieee.org/document/4983179/
 
-	Reference paper:
+	Reference:
 		Tseng, Lin-Yu, and Chun Chen. "Multiple trajectory search for unconstrained/constrained multi-objective optimization." Evolutionary Computation, 2009. CEC'09. IEEE Congress on. IEEE, 2009.
 
 	Attributes:
 		Name (List[str]): List of strings representing algorithm name.
 
-	See Also:
-		* :class:`NiaPy.algorithms.other.MultipleTrajectorySearch``
+	Note: See also
+		* [MultipleTrajectorySearch](#NiaPy.algorithms.other.mts.MultipleTrajectorySearch)
 	"""
 	Name = ['MultipleTrajectorySearchV1', 'MTSv1']
 
@@ -526,8 +527,8 @@ class MultipleTrajectorySearchV1(MultipleTrajectorySearch):
 		Returns:
 			str: Basic information of algorithm.
 
-		See Also:
-			* :func:`NiaPy.algorithms.Algorithm.algorithmInfo`
+		Note: See also
+			* [Algorith.algorithmInfo](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.algorithmInfo)
 		"""
 		return r"""Tseng, Lin-Yu, and Chun Chen. "Multiple trajectory search for unconstrained/constrained multi-objective optimization." Evolutionary Computation, 2009. CEC'09. IEEE Congress on. IEEE, 2009."""
 
@@ -537,10 +538,8 @@ class MultipleTrajectorySearchV1(MultipleTrajectorySearch):
 		Args:
 			**kwargs (Dict[str, Any]): Additional arguments.
 
-		See Also:
-			* :func:`NiaPy.algorithms.other.MultipleTrajectorySearch.setParameters`
+		Note: See also
+			* [Algorithm.setParameters](/reference/algorithms/algorithm/#NiaPy.algorithms.algorithm.Algorithm.setParameters)
 		"""
 		kwargs.pop('NoLsBest', None)
 		MultipleTrajectorySearch.setParameters(self, NoLsBest=0, LSs=(MTS_LS1v1, MTS_LS2), **kwargs)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

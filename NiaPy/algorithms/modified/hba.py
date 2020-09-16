@@ -96,5 +96,3 @@ class HybridBatAlgorithm(BatAlgorithm):
 			numpy.ndarray: New solution based on global best individual.
 		"""
 		return task.repair(self.CrossMutt(Sol, i, best, self.F, self.CR, rnd=self.Rand), rnd=self.Rand)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

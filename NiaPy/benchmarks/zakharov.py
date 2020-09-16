@@ -82,5 +82,3 @@ class Zakharov(Benchmark):
 			for i in range(D): v1, v2 = v1 + X[i] ** 2, v2 + 0.5 * (i + 1) * X[i]
 			return v1 + v2 ** 2 + v2 ** 4
 		return f
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

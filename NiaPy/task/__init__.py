@@ -7,13 +7,11 @@ from NiaPy.task.task import (
     ThrowingTask,
     OptimizationType
 )
-from NiaPy.task.utility import Utility
 
 __all__ = [
     'Task',
     'CountingTask',
     'StoppingTask',
     'ThrowingTask',
-    'OptimizationType',
-    'Utility'
+    'OptimizationType'
 ]

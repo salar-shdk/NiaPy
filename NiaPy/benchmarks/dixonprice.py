@@ -83,5 +83,3 @@ class DixonPrice(Benchmark):
 			for i in range(2, D): v += i * (2 * X[i] ** 2 - X[i - 1]) ** 2
 			return (X[0] - 1) ** 2 + v
 		return f
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

@@ -63,5 +63,3 @@ class HSv1TestCase(AlgorithmTestCase):
 		hs_griewank = self.algo(seed=self.seed)
 		hs_griewankc = self.algo(seed=self.seed)
 		AlgorithmTestCase.test_algorithm_run(self, hs_griewank, hs_griewankc)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

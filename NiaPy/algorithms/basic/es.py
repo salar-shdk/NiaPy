@@ -575,7 +575,7 @@ class CovarianceMatrixAdaptionEvolutionStrategy(Algorithm):
 	def setParameters(self, epsilon=1e-20, **ukwargs):
 		r"""Set core parameters of CovarianceMatrixAdaptionEvolutionStrategy algorithm.
 
-		Args:
+		Attributes:
 			epsilon (float): Small number.
 			**ukwargs (Dict[str, Any]): Additional arguments.
 		"""
@@ -592,5 +592,3 @@ class CovarianceMatrixAdaptionEvolutionStrategy(Algorithm):
 			TODO.
 		"""
 		return CovarianceMaatrixAdaptionEvolutionStrategyF(task, self.epsilon, rnd=self.Rand)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

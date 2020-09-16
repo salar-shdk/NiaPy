@@ -450,5 +450,3 @@ class GlowwormSwarmOptimizationV3(GlowwormSwarmOptimization):
 
 		"""
 		return R + (self.beta * sum(N)) if sum(N) < self.nt else (-self.beta1 * sum(N))
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

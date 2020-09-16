@@ -495,5 +495,3 @@ class DynNpMultiStrategyDifferentialEvolutionMTSv1(DynNpMultiStrategyDifferentia
 			* :func:`NiaPy.algorithm.modified.DynNpMultiStrategyDifferentialEvolutionMTS.setParameters`
 		"""
 		DynNpMultiStrategyDifferentialEvolutionMTS.setParameters(self, LSs=(MTS_LS1v1, MTS_LS2, MTS_LS3v1), **kwargs)
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

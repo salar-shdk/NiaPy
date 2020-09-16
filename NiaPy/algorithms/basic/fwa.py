@@ -61,7 +61,7 @@ class BareBonesFireworksAlgorithm(Algorithm):
 	def setParameters(self, n=10, C_a=1.5, C_r=0.5, **ukwargs):
 		r"""Set the arguments of an algorithm.
 
-		Arguments:
+		Attributes:
 			n (int): Number of sparks :math:`\in [1, \infty)`.
 			C_a (float): Amplification coefficient :math:`\in [1, \infty)`.
 			C_r (float): Reduction coefficient :math:`\in (0, 1)`.
@@ -165,7 +165,7 @@ class FireworksAlgorithm(Algorithm):
 	def setParameters(self, N=40, m=40, a=1, b=2, A=40, epsilon=1e-31, **ukwargs):
 		r"""Set the arguments of an algorithm.
 
-		Arguments:
+		Attributes:
 			N (int): Number of Fireworks
 			m (int): Number of sparks
 			a (int): Limitation of sparks
@@ -868,5 +868,3 @@ class DynamicFireworksAlgorithm(DynamicFireworksAlgorithmGauss):
 		iw, ib = argmax(FW_f), 0
 		xb, fxb, Ab = self.uCF(xnb, FW[ib], FW_f[ib], xb, fxb, Ab, task)
 		return FW, FW_f, xb, fxb, {'Ah': Ah, 'Ab': Ab}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

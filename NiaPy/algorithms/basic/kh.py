@@ -864,5 +864,3 @@ class KrillHerdV11(KrillHerd):
 		KHo, KHo_f = self.ElitistSelection(KH, KH_f, KHo, KHo_f)
 		xb, fxb = self.getBest(KH, KH_f, xb, fxb)
 		return KH, KH_f, xb, fxb, {'KHo': KHo, 'KHo_f': KHo_f, 'N': N, 'F': F, 'Dt': Dt}
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

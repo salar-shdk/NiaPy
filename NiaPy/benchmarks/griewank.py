@@ -170,5 +170,3 @@ class ExpandedGriewankPlusRosenbrock(Benchmark):
 			for i in range(1, D): val += h(g(x[i - 1], x[i]))
 			return h(g(x[D - 1], x[0])) + val
 		return f
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3

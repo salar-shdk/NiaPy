@@ -84,5 +84,3 @@ class HGBat(Benchmark):
 			for i in range(D): val2 += x[i]
 			return fabs(val1 ** 2 - val2 ** 2) ** (1 / 2) + (0.5 * val1 + val2) / D + 0.5
 		return f
-
-# vim: tabstop=3 noexpandtab shiftwidth=3 softtabstop=3
