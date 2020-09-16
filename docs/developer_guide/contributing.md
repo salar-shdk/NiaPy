@@ -6,7 +6,7 @@ First off, thanks for taking the time to contribute!
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-`/code_of_conduct`. By participating, you are expected to uphold this
+[Code of Conduct](https://github.com/NiaOrg/NiaPy/blob/master/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this
 code. Please report unacceptable behavior to
 <niapy.organization@gmail.com>.
 
@@ -32,9 +32,13 @@ faster.
 
 ### Pull requests (PR)
 
-> If you are not so familiar with Git or/and GitHub, we suggest you take a look at our `/guides/git_beginners`.
+!!! Note
 
-> Firstly follow the developers `/installation` guide to install needed software in order to contribute to our source code.
+    If you are not so familiar with Git or/and GitHub, we suggest you take a look at our `/guides/git_beginners`.
+
+!!! Tip
+
+    Firstly, follow the developers `/installation` guide to install needed software in order to contribute to our source code.
 
 -   Fill in the reqired template
 -   Document new code
