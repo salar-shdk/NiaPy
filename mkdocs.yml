@@ -45,6 +45,7 @@ nav:
   - Release notes: changelog.md
   - Code of conduct: code_of_conduct.md
   - Credits: credits.md
+
 theme:
     name: material
     custom_dir: docs/niapy_theme
