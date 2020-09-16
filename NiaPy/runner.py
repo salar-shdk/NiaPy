@@ -172,8 +172,7 @@ class Runner:
         logger.info("Export to XLSX file completed!")
 
     def run(self, export="dataframe", verbose=False):
-        """
-        Execute runner.
+        """Execute runner.
 
         Arguments:
             export (str): Takes export type (e.g. dataframe, json, xls, xlsx)

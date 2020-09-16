@@ -1,15 +1,9 @@
 # encoding=utf8
-"""Algorithm module implementation."""
-
 import logging
 
-import numpy as np
-from NiaPy.util import (
-	FesException,
-	GenException,
-	TimeException,
-	RefException
-)
+from numpy import random as rand, inf, ndarray, asarray, array_equal, argmin, apply_along_axis
+
+from NiaPy.util import FesException, GenException, TimeException, RefException
 from NiaPy.util.utility import objects2array
 
 logging.basicConfig()
@@ -23,9 +17,8 @@ __all__ = [
 	'defaultNumPyInit'
 ]
 
-def defaultNumPyInit(task, NP, rnd=np.random, **kwargs):
-	r"""
-	Initialize starting population that is represented with `numpy.ndarray` with shape `{NP, task.D}`.
+def defaultNumPyInit(task, NP, rnd=rand, **kwargs):
+	r"""Initialize starting population that is represented with `numpy.ndarray` with shape `{NP, task.D}`.
 
 	Args:
 		task (Task): Optimization task.
@@ -39,11 +32,11 @@ def defaultNumPyInit(task, NP, rnd=np.random, **kwargs):
 		1. New population with shape `{NP, task.D}`.
 		2. New population function/fitness values.
 	"""
-	pop = task.Lower + np.random.rand(NP, task.D) * task.bRange
-	fpop = np.apply_along_axis(task.eval, 1, pop)
+	pop = task.Lower + rnd.rand(NP, task.D) * task.bRange
+	fpop = apply_along_axis(task.eval, 1, pop)
 	return pop, fpop
 
-def defaultIndividualInit(task, NP, rnd=np.random, itype=None, **kwargs):
+def defaultIndividualInit(task, NP, rnd=rand, itype=None, **kwargs):
 	r"""Initialize `NP` individuals of type `itype`.
 
 	Args:
@@ -60,11 +53,10 @@ def defaultIndividualInit(task, NP, rnd=np.random, itype=None, **kwargs):
 		2. Initialized individuals function/fitness values.
 	"""
 	pop = objects2array([itype(task=task, rnd=rnd, e=True) for _ in range(NP)])
-	return pop, np.asarray([x.f for x in pop])
+	return pop, asarray([x.f for x in pop])
 
 class Algorithm:
-	r"""
-	Class for implementing algorithms.
+	r"""Class for implementing algorithms.
 
 	Date: 2018
 
@@ -97,13 +89,12 @@ class Algorithm:
 
 		Return:
 			Dict[str, Callable]:
-				* NP (Callable[[int], bool]): Check if number of individuals is $\in [0, \infty]$.
+				* NP (Callable[[int], bool]): Check if number of individuals is :math:`\in [0, \infty]`.
 		"""
 		return {'NP': lambda x: isinstance(x, int) and x > 0}
 
 	def __init__(self, **kwargs):
-		r"""
-		Initialize algorithm and create name for an algorithm.
+		r"""Initialize algorithm and create name for an algorithm.
 
 		Args:
 			seed (int): Starting seed for random generator.
@@ -111,13 +102,12 @@ class Algorithm:
 		Note: See also
 			* [setParameters](#NiaPy.algorithms.algorithm.Algorithm.setParameters)
 		"""
-		self.Rand, self.exception = np.random.RandomState(kwargs.pop('seed', None)), None
+		self.Rand, self.exception = rand.RandomState(kwargs.pop('seed', None)), None
 		self.setParameters(**kwargs)
 
 	@staticmethod
 	def algorithmInfo():
-		r"""
-		Get algorithm information.
+		r"""Get algorithm information.
 
 		Returns:
 			str: Bit item.
@@ -125,11 +115,10 @@ class Algorithm:
 		return '''Basic algorithm. No implementation!!!'''
 
 	def setParameters(self, NP=50, InitPopFunc=defaultNumPyInit, itype=None, **kwargs):
-		r"""
-		Set the parameters/arguments of the algorithm.
+		r"""Set the parameters/arguments of the algorithm.
 
 		Args:
-			NP (Optional[int]): Number of individuals in population $\in [1, \infty]$.
+			NP (Optional[int]): Number of individuals in population :math:`\in [1, \infty]`.
 			InitPopFunc (Optional[Callable[[int, Task, mtrand.RandomState, Dict[str, Any]], Tuple[numpy.ndarray, numpy.ndarray[float]]]]): Type of individuals used by algorithm.
 			itype (Optional[Any]): Individual type used in population, default is Numpy array.
 			**kwargs (Dict[str, Any]): Additional arguments.
@@ -141,8 +130,7 @@ class Algorithm:
 		self.NP, self.InitPopFunc, self.itype = NP, InitPopFunc, itype
 
 	def getParameters(self):
-		r"""
-		Get parameters of the algorithm.
+		r"""Get parameters of the algorithm.
 
 		Returns:
 			Dict[str, Any]:
@@ -156,22 +144,20 @@ class Algorithm:
 		}
 
 	def rand(self, D=1):
-		r"""
-		Get random distribution of shape D in range from 0 to 1.
+		r"""Get random distribution of shape D in range from 0 to 1.
 
 		Args:
 			D (numpy.ndarray[int]): Shape of returned random distribution.
 
 		Returns:
-			Union[numpy.ndarray[float], float]: Random number or numbers $\in [0, 1]$.
+			Union[numpy.ndarray[float], float]: Random number or numbers :math:`\in [0, 1]`.
 		"""
-		if isinstance(D, (np.ndarray, list)): return self.Rand.rand(*D)
+		if isinstance(D, (ndarray, list)): return self.Rand.rand(*D)
 		elif D > 1: return self.Rand.rand(D)
 		else: return self.Rand.rand()
 
 	def uniform(self, Lower, Upper, D=None):
-		r"""
-		Get uniform random distribution of shape D in range from "Lower" to "Upper".
+		r"""Get uniform random distribution of shape D in range from "Lower" to "Upper".
 
 		Args:
 			Lower (Iterable[float]): Lower bound.
@@ -179,13 +165,12 @@ class Algorithm:
 			D (Union[int, Iterable[int]]): Shape of returned uniform random distribution.
 
 		Returns:
-			Union[numpy.ndarray[float], float]: Array of numbers $\in [\mathit{Lower}, \mathit{Upper}]$.
+			Union[numpy.ndarray[float], float]: Array of numbers :math:`\in [\mathit{Lower}, \mathit{Upper}]`.
 		"""
 		return self.Rand.uniform(Lower, Upper, D) if D is not None else self.Rand.uniform(Lower, Upper)
 
 	def normal(self, loc, scale, D=None):
-		r"""
-		Get normal random distribution of shape D with mean "loc" and standard deviation "scale".
+		r"""Get normal random distribution of shape D with mean "loc" and standard deviation "scale".
 
 		Args:
 			loc (float): Mean of the normal random distribution.
@@ -198,22 +183,20 @@ class Algorithm:
 		return self.Rand.normal(loc, scale, D) if D is not None else self.Rand.normal(loc, scale)
 
 	def randn(self, D=None):
-		r"""
-		Get standard normal distribution of shape D.
+		r"""Get standard normal distribution of shape D.
 
 		Args:
 			D (Union[int, Iterable[int]]): Shape of returned standard normal distribution.
 
 		Returns:
-			Union[numpy.ndarray[float], float]: Random generated numbers or one random generated number $\in [0, 1]$.
+			Union[numpy.ndarray[float], float]: Random generated numbers or one random generated number :math:`\in [0, 1]`.
 		"""
 		if D is None: return self.Rand.randn()
 		elif isinstance(D, int): return self.Rand.randn(D)
 		return self.Rand.randn(*D)
 
 	def randint(self, Nmax, D=1, Nmin=0, skip=None):
-		r"""
-		Get discrete uniform (integer) random distribution of D shape in range from "Nmin" to "Nmax".
+		r"""Get discrete uniform (integer) random distribution of D shape in range from "Nmin" to "Nmax".
 
 		Args:
 			Nmin (int): Lower integer bound.
@@ -225,14 +208,13 @@ class Algorithm:
 			Union[int, numpy.ndarrayj[int]]: Random generated integer number.
 		"""
 		r = None
-		if isinstance(D, (list, tuple, np.ndarray)): r = self.Rand.randint(Nmin, Nmax, D)
+		if isinstance(D, (list, tuple, ndarray)): r = self.Rand.randint(Nmin, Nmax, D)
 		elif D > 1: r = self.Rand.randint(Nmin, Nmax, D)
 		else: r = self.Rand.randint(Nmin, Nmax)
 		return r if skip is None or r not in skip else self.randint(Nmax, D, Nmin, skip)
 
-	def getBest(self, X, X_f, xb=None, xb_f=np.inf):
-		r"""
-		Get the best individual for population.
+	def getBest(self, X, X_f, xb=None, xb_f=inf):
+		r"""Get the best individual for population.
 
 		Args:
 			X (numpy.ndarray): Current population.
@@ -246,14 +228,13 @@ class Algorithm:
 			1. Coordinates of best solution.
 			2. beset fitness/function value.
 		"""
-		ib = np.argmin(X_f)
+		ib = argmin(X_f)
 		if isinstance(X_f, (float, int)) and xb_f >= X_f: xb, xb_f = X, X_f
-		elif isinstance(X_f, (np.ndarray, list)) and xb_f >= X_f[ib]: xb, xb_f = X[ib], X_f[ib]
+		elif isinstance(X_f, (ndarray, list)) and xb_f >= X_f[ib]: xb, xb_f = X[ib], X_f[ib]
 		return (xb.x.copy() if isinstance(xb, Individual) else xb.copy()), xb_f
 
 	def initPopulation(self, task):
-		r"""
-		Initialize starting population of optimization algorithm.
+		r"""Initialize starting population of optimization algorithm.
 
 		Args:
 			task (Task): Optimization task.
@@ -271,9 +252,8 @@ class Algorithm:
 		pop, fpop = self.InitPopFunc(task=task, NP=self.NP, rnd=self.Rand, itype=self.itype)
 		return pop, fpop, {}
 
-	def runIteration(self, task, pop, fpop, xb, fx_b, **dparams):
-		r"""
-		Core functionality of algorithm.
+	def runIteration(self, task, pop, fpop, xb, fxb, **dparams):
+		r"""Core functionality of algorithm.
 
 		This function is called on every algorithm iteration.
 
@@ -297,11 +277,10 @@ class Algorithm:
 		Note: See also
 			* [runYield](#NiaPy.algorithms.algorithm.Algorithm.runYield)
 		"""
-		return pop, fpop, xb, fx_b, dparams
+		return pop, fpop, xb, fxb, dparams
 
 	def runYield(self, task):
-		r"""
-		Run the algorithm for a single iteration and return the best solution.
+		r"""Run the algorithm for a single iteration and return the best solution.
 
 		Args:
 			task (Task): Task with bounds and objective function for optimization.
@@ -327,8 +306,7 @@ class Algorithm:
 			yield xb, fxb
 
 	def runTask(self, task):
-		r"""
-		Start the optimization.
+		r"""Start the optimization.
 
 		Args:
 			task (Task): Task with bounds and objective function for optimization.
@@ -342,15 +320,14 @@ class Algorithm:
 		Note: See also
 			* [runYield](#NiaPy.algorithms.algorithm.Algorithm.runYield)
 		"""
-		algo, xb, fxb = self.runYield(task), None, np.inf
+		algo, xb, fxb = self.runYield(task), None, inf
 		while not task.stopCond():
 			xb, fxb = next(algo)
 			task.nextIter()
 		return xb, fxb
 
 	def run(self, task):
-		r"""
-		Start the optimization.
+		r"""Start the optimization.
 
 		Args:
 			task (Task): Optimization task.
@@ -365,14 +342,14 @@ class Algorithm:
 			* [runTask](#NiaPy.algorithms.algorithm.Algorithm.runTask)
 		"""
 		try:
+			# task.start()
 			r = self.runTask(task)
 			return r[0], r[1] * task.optType.value
 		except (FesException, GenException, TimeException, RefException): return task.x, task.x_f * task.optType.value
 		return None, None
 
 	def bad_run(self):
-		r"""
-		Check if some exeptions where thrown when the algorithm was running.
+		r"""Check if some exeptions where thrown when the algorithm was running.
 
 		Returns:
 			bool: True if some error where detected at runtime of the algorithm, otherwise False
@@ -380,10 +357,7 @@ class Algorithm:
 		return self.exception is not None
 
 class Individual:
-	r"""
-	Class that represents one solution in population of solutions.
-
-	Date: 2018
+	r"""Class that represents one solution in population of solutions.
 
 	Date: 2018
 
@@ -396,13 +370,10 @@ class Individual:
 		f (float): Function/fitness value of individual.
 	"""
 	x = None
-	"""numpy.ndarray: Coordinates of individual."""
-	f = np.inf
-	"""float: Function/fitness value of individual."""
+	f = inf
 
-	def __init__(self, x=None, task=None, e=True, rand=np.random, **kwargs):
-		r"""
-		Initialize new individual.
+	def __init__(self, x=None, task=None, e=True, rnd=rand, **kwargs):
+		r"""Initialize new individual.
 
 		Attributes:
 			task (Optional[Task]): Optimization task.
@@ -411,35 +382,33 @@ class Individual:
 			e (Optional[bool]): True to evaluate the individual on initialization. Default value is True.
 			**kwargs (Dict[str, Any]): Additional arguments.
 		"""
-		self.f = task.optType.value * np.inf if task is not None else np.inf
-		if x is not None: self.x = x if isinstance(x, np.ndarray) else np.asarray(x)
+		self.f = task.optType.value * inf if task is not None else inf
+		if x is not None: self.x = x if isinstance(x, ndarray) else asarray(x)
 		else: self.generateSolution(task, rnd)
 		if e and task is not None: self.evaluate(task, rnd)
 
-	def generateSolution(self, task, rand=np.random):
-		r"""
-		Generate new solution.
+	def generateSolution(self, task, rnd=rand):
+		r"""Generate new solution.
 
 		Generate new solution for this individual and set it to ``self.x``.
-		This method uses ``rand`` for getting random numbers.
+		This method uses ``rnd`` for getting random numbers.
 		For generating random components ``rnd`` and ``task`` is used.
 
 		Args:
 			task (Task): Optimization task.
-			rand (Optional[mtrand.RandomState]): Random numbers generator object.
+			rnd (Optional[mtrand.RandomState]): Random numbers generator object.
 		"""
-		if task is not None: self.x = task.Lower + task.bRange * rand.rand(task.D)
+		if task is not None: self.x = task.Lower + task.bRange * rnd.rand(task.D)
 
-	def evaluate(self, task, rand=np.random):
-		r"""
-		Evaluate the solution.
+	def evaluate(self, task, rnd=rand):
+		r"""Evaluate the solution.
 
 		Evaluate solution ``this.x`` with the help of task.
 		Task is used for reparing the solution and then evaluating it.
 
 		Args:
 			task (Task): Objective function object.
-			rand (Optional[mtrand.RandomState]): Random generator.
+			rnd (Optional[mtrand.RandomState]): Random generator.
 
 		Note: See also
 			* [Task.repair](reference/task/#NiaPy.task.task.Task.repair)
@@ -448,8 +417,7 @@ class Individual:
 		self.f = task.eval(self.x)
 
 	def copy(self):
-		r"""
-		Return a copy of self.
+		r"""Return a copy of self.
 
 		Method returns copy of ``this`` object so it is safe for editing.
 
@@ -459,8 +427,7 @@ class Individual:
 		return Individual(x=self.x.copy(), f=self.f, e=False)
 
 	def __eq__(self, other):
-		r"""
-		Compare the individuals for equalities.
+		r"""Compare the individuals for equalities.
 
 		Args:
 			other (Union[Any, numpy.ndarray]): Object that we want to compare this object to.
@@ -468,15 +435,14 @@ class Individual:
 		Returns:
 			bool: `True` if equal or `False` if no equal.
 		"""
-		if isinstance(other, np.ndarray):
+		if isinstance(other, ndarray):
 			for e in other:
 				if self == e: return True
 			return False
-		return np.array_equal(self.x, other.x) and self.f == other.f
+		return array_equal(self.x, other.x) and self.f == other.f
 
 	def __str__(self):
-		r"""
-		Print the individual with the solution and objective value.
+		r"""Print the individual with the solution and objective value.
 
 		Returns:
 			str: String representation of self.
@@ -484,8 +450,7 @@ class Individual:
 		return '%s -> %s' % (self.x, self.f)
 
 	def __getitem__(self, i):
-		r"""
-		Get the value of i-th component of the solution.
+		r"""Get the value of i-th component of the solution.
 
 		Args:
 			i (int): Position of the solution component.
@@ -496,8 +461,7 @@ class Individual:
 		return self.x[i]
 
 	def __setitem__(self, i, v):
-		r"""
-		Set the value of i-th component of the solution to v value.
+		r"""Set the value of i-th component of the solution to v value.
 
 		Args:
 			i (int): Position of the solution component.
@@ -506,8 +470,7 @@ class Individual:
 		self.x[i] = v
 
 	def __len__(self):
-		r"""
-		Get the length of the solution or the number of components.
+		r"""Get the length of the solution or the number of components.
 
 		Returns:
 			int: Number of components.
