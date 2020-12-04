@@ -3,6 +3,10 @@
 from math import pow
 from unittest import TestCase
 from numpy import asarray, pi, full
+<<<<<<< HEAD
+=======
+
+>>>>>>> 362de3a83ddc3829b1945af882d7c3aa0f632cb7
 from NiaPy.benchmarks import BenchmarkUtility
 
 

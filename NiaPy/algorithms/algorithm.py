@@ -360,8 +360,11 @@ class Individual:
 	r"""Class that represents one solution in population of solutions.
 
 	Date: 2018
+<<<<<<< HEAD
 
 	Date: 2018
+=======
+>>>>>>> 362de3a83ddc3829b1945af882d7c3aa0f632cb7
 
 	Author: Klemen Berkovič
 
