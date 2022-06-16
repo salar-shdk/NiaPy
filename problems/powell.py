@@ -72,9 +72,9 @@ class Powell(Problem):
         x1 = x[range(0, self.dimension - 3, 4)]
         x2 = x[range(1, self.dimension - 2, 4)]
         x3 = x[range(2, self.dimension - 1, 4)]
-        x4 = x[range(3, self.dimension , 4)]
+        x4 = x[range(3, self.dimension - 0, 4)]
 
-        term1 = (x1 + 10 * x2) ** 2.0
+        term1 = (x1 - 10 * x2) ** 2.0
         term2 = 5 * (x3 - x4) ** 2.0
         term3 = (x2 - 2 * x3) ** 4.0
         term4 = 10 * (x1 - x4) ** 4.0
