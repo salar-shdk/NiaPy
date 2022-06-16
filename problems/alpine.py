@@ -111,7 +111,7 @@ class Alpine2(Problem):
 
     """
 
-    def __init__(self, dimension=4, lower=0.0, upper=10.0, *args, **kwargs):
+    def __init__(self, dimension=4, lower=-10.0, upper=10.0, *args, **kwargs):
         r"""Initialize Alpine2 problem..
 
         Args:
