@@ -166,7 +166,7 @@ class ExpandedSchaffer(Problem):
 
     """
 
-    def __init__(self, dimension=4, lower=-10.0, upper=10.0, *args, **kwargs):
+    def __init__(self, dimension=2, lower=-10.0, upper=10.0, *args, **kwargs):
         r"""Initialize Expanded Schaffer problem..
 
         Args:
@@ -191,7 +191,6 @@ class ExpandedSchaffer(Problem):
         return r'''$f(\textbf{x}) = g(x_D, x_1) + \sum_{i=2}^D g(x_{i - 1}, x_i) \\ g(x, y) = 0.5 + \frac{\sin \left(\sqrt{x^2 + y^2} \right)^2 - 0.5}{\left( 1 + 0.001 (x^2 + y^2) \right)}^2$'''
 
     def _evaluate(self, x):
-        x_next = np.roll(x, -1)
-        tmp = x ** 2 + x_next ** 2
+        tmp = x[0]**2 + x[1]**2
         val = 0.5 + (np.sin(np.sqrt(tmp)) ** 2 - 0.5) / (1 + 0.001 * tmp) ** 2
         return np.sum(val)
