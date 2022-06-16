@@ -79,11 +79,33 @@ class MothFlameOptimizer(Algorithm):
         """
         # Previous positions
         # Create sorted population
-        indexes = np.argsort(population_fitness)
-        sorted_population = population[indexes]
+        if task.iters == 0:
+            indexes = np.argsort(population_fitness)
+            sorted_population = population[indexes]
+            sorted_fitness = population_fitness[indexes]
+            previous_population = population
+            previous_fitness    = population_fitness
+        else:
+            population_double         = population
+            population_fitness_double = population_fitness
+
+            previous_population   = population[0:self.population_size]
+            previous_fitness      = population_fitness[0:self.population_size]
+
+            population            = population[self.population_size:]
+            population_fitness    = population_fitness[self.population_size:]
+
+            indexes = np.argsort(population_fitness_double)
+            indexes = indexes[0:self.population_size]
+
+            sorted_population = population_double[indexes]
+            sorted_fitness = population_fitness_double[indexes]
+
+            previous_population = population
+            previous_fitness    = population_fitness
         # Some parameters
-        flame_no, a = round(self.population_size - (task.iters + 1) * ((self.population_size - 1) / task.max_iters)), -1 + (task.iters + 1) * (
-                    (-1) / task.max_iters)
+        flame_no, a = round(self.population_size - (task.iters + 1) * ((self.population_size - 1) / task.max_iters)),\
+             -1 + (task.iters + 1) * ((-1) / task.max_iters)
         for i in range(self.population_size):
             for j in range(task.dimension):
                 distance_to_flame, b, t = abs(sorted_population[i, j] - population[i, j]), 1, (a - 1) * self.random() + 1
@@ -95,4 +117,8 @@ class MothFlameOptimizer(Algorithm):
         population = np.apply_along_axis(task.repair, 1, population, self.rng)
         population_fitness = np.apply_along_axis(task.eval, 1, population)
         best_x, best_fitness = self.get_best(population, population_fitness, best_x, best_fitness)
+
+        population = np.concatenate((previous_population,population),axis=0)
+        population_fitness = np.concatenate((previous_fitness, population_fitness),axis=0)
+        
         return population, population_fitness, best_x, best_fitness, {}
