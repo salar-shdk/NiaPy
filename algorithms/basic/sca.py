@@ -151,7 +151,7 @@ class SineCosineAlgorithm(Algorithm):
                 5. Additional arguments.
 
         """
-        r1 = self.a - (task.iters + 1) * (self.a / (task.iters + 1))
+        r1 = self.a - ((task.iters + 1) * self.a / (task.max_iters))
         r2 = self.uniform(0, 2 * np.pi)
         r3 = self.uniform(self.r_min, self.r_max)
         r4 = self.random()
