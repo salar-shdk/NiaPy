@@ -70,7 +70,7 @@ class Alpine1(Problem):
         return r'''$f(\mathbf{x}) = \sum_{i=1}^{D} \lvert x_i \sin(x_i)+0.1x_i \rvert$'''
 
     def _evaluate(self, x):
-        return np.sum(np.abs(np.sin(x) + 0.1 * x))
+        return np.sum(np.abs(np.multiply(x,np.sin(x)) + 0.1 * x))
 
 
 class Alpine2(Problem):
