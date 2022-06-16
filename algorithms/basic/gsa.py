@@ -54,7 +54,7 @@ class GravitationalSearchAlgorithm(Algorithm):
         """
         return r"""Esmat Rashedi, Hossein Nezamabadi-pour, Saeid Saryazdi, GSA: A Gravitational Search Algorithm, Information Sciences, Volume 179, Issue 13, 2009, Pages 2232-2248, ISSN 0020-0255"""
 
-    def __init__(self, population_size=40, g0=2500, epsilon=1e-4, *args, **kwargs):
+    def __init__(self, population_size=40, g0=100, epsilon=1e-4, *args, **kwargs):
         """Initialize GravitationalSearchAlgorithm.
 
         Args:
@@ -103,7 +103,7 @@ class GravitationalSearchAlgorithm(Algorithm):
         })
         return d
 
-    def gravity(self, t):
+    def gravity(self, max_t, t):
         r"""Get new gravitational constant.
 
         Args:
@@ -113,7 +113,7 @@ class GravitationalSearchAlgorithm(Algorithm):
             float: New gravitational constant.
 
         """
-        return self.g0 / t
+        return self.g0 * np.exp(-20 * t / max_t)
 
     def init_population(self, task):
         r"""Initialize staring population.
@@ -160,11 +160,15 @@ class GravitationalSearchAlgorithm(Algorithm):
         velocities = params.pop('velocities')
 
         ib, iw = np.argmin(population_fitness), np.argmax(population_fitness)
-        m = (population_fitness - population_fitness[iw]) / (population_fitness[ib] - population_fitness[iw])
-        m = m / np.sum(m)
-        forces = np.asarray([[self.gravity((task.iters + 1)) * ((m[i] * m[j]) / (euclidean(population[i], population[j]) + self.epsilon)) * (
-                population[j] - population[i]) for j in range(len(m))] for i in range(len(m))])
-        total_force = np.sum(self.random((self.population_size, task.dimension)) * forces, axis=1)
+        m = (population_fitness - population_fitness[iw]) / (population_fitness[ib] - population_fitness[iw] + self.epsilon)
+        m = m / (np.sum(m) + self.epsilon)
+        Kn = int(len(m)-(task.iters *2 /task.max_iters)*(len(m)-1))
+        order = np.argsort(population_fitness)
+        population = population[order,:]
+        forces = np.asarray([[self.gravity(task.max_iters,(task.iters + 1)) * ((m[i] * m[j]) / (euclidean(population[i], population[j]) + self.epsilon)) * (
+                population[j] - population[i]) for j in range(Kn)] for i in range(len(m))])
+        forces = np.sum(forces,axis=1)
+        total_force = self.random((self.population_size, task.dimension)) * forces
         a = total_force.T / (m + self.epsilon)
         velocities = self.random((self.population_size, task.dimension)) * velocities + a.T
         population = np.apply_along_axis(task.repair, 1, population + velocities, self.rng)
