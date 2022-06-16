@@ -89,10 +89,10 @@ class Pinter(Problem):
         add = np.roll(x, - 1)
         indices = np.arange(1, self.dimension + 1)
 
-        a = (sub * np.sin(x) + np.sin(add))
-        b = ((sub * sub) - 2.0 * x + 3.0 * add - np.cos(x) + 1.0)
+        a = sub * np.sin(x) + np.sin(add)
+        b = (sub * sub) - 2.0 * x + 3.0 * add - np.cos(x) + 1.0
 
-        val1 = np.sum(indices * x * x)
+        val1 = np.sum(indices * (x * x))
         val2 = np.sum(20.0 * indices * np.power(np.sin(a), 2.0))
         val3 = np.sum(indices * np.log10(1.0 + indices * np.power(b, 2.0)))
 
