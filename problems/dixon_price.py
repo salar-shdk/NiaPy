@@ -69,6 +69,6 @@ class DixonPrice(Problem):
         return r'''$f(\textbf{x}) = (x_1 - 1)^2 + \sum_{i = 2}^D i (2x_i^2 - x_{i - 1})^2$'''
 
     def _evaluate(self, x):
-        indices = np.arange(2, self.dimension)
-        val = np.sum(indices * (2 * x[2:] ** 2 - x[1:self.dimension - 1]) ** 2)
+        indices = np.arange(1, self.dimension)
+        val = np.sum(indices * (2 * x[1:] ** 2 - x[0:-1]) ** 2)
         return (x[0] - 1) ** 2 + val
