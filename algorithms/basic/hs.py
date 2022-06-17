@@ -71,10 +71,10 @@ class HarmonySearch(Algorithm):
         self.r_pa = r_pa
         self.b_range = b_range
 
-    def set_parameters(self, population_size=30, r_accept=0.7, r_pa=0.35, b_range=1.42, **kwargs):
+    def set_parameters(self, population_size=30, r_accept=0.5, r_pa=0.8, b_range=0.2, **kwargs):
         r"""Set the arguments of the algorithm.
 
-        Args:
+        Args: 
             population_size (Optional[int]): Number of harmony in the memory.
             r_accept (Optional[float]): Probability of accepting new bandwidth to harmony.
             r_pa (Optional[float]): Probability of accepting random bandwidth into harmony.
@@ -109,7 +109,7 @@ class HarmonySearch(Algorithm):
             float: Bandwidth.
 
         """
-        return self.uniform(-1, 1) * self.b_range
+        return self.uniform(-0.5, 0.5) * self.b_range
 
     def adjustment(self, x, task):
         r"""Adjust value based on bandwidth.
@@ -137,9 +137,9 @@ class HarmonySearch(Algorithm):
         """
         harmony = np.zeros(task.dimension)
         for i in range(task.dimension):
-            r, j = self.random(), self.integers(self.population_size)
-            harmony[i] = harmonies[j, i] if r > self.r_accept else self.adjustment(harmonies[j, i], task) if r > self.r_pa else self.uniform(
-                task.lower[i], task.upper[i])
+            r1,r2, j = self.random(),self.random(), self.integers(self.population_size)
+            harmony[i] = harmonies[j, i] if r1 < self.r_accept else self.uniform(task.lower[i], task.upper[i])
+            harmony[i] = self.adjustment(harmony[i], task) if r2 > self.r_pa else harmony[i]
         return harmony
 
     def run_iteration(self, task, population, population_fitness, best_x, best_fitness, **params):
