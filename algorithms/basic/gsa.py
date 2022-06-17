@@ -163,7 +163,7 @@ class GravitationalSearchAlgorithm(Algorithm):
         m = (population_fitness - population_fitness[iw]) / (population_fitness[ib] - population_fitness[iw] + self.epsilon)
         m = m / (np.sum(m) + self.epsilon)
         # Kn: decreasing K best masses
-        Kn = int(self.population_size*np.exp(-20 * task.iters / task.max_iters)) + 1
+        Kn = int((self.population_size-1)*np.exp(-20 * task.iters / task.max_iters)) + 1
         order = np.argsort(population_fitness)
         population = population[order,:]
         forces = np.asarray([[self.gravity(task.max_iters,(task.iters + 1)) * ((m[i] * m[j]) / (euclidean(population[i], population[j]) + self.epsilon)) * (
