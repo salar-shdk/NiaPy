@@ -61,8 +61,8 @@ class ForestOptimizationAlgorithm(Algorithm):
         """
         return r"""Manizheh Ghaemi, Mohammad-Reza Feizi-Derakhshi, Forest Optimization Algorithm, Expert Systems with Applications, Volume 41, Issue 15, 2014, Pages 6676-6687, ISSN 0957-4174, https://doi.org/10.1016/j.eswa.2014.05.009."""
 
-    def __init__(self, population_size=10, lifetime=3, area_limit=5, local_seeding_changes=1, global_seeding_changes=1,
-                 transfer_rate=0.05, *args, **kwargs):
+    def __init__(self, population_size=10, lifetime=10, area_limit=15, local_seeding_changes=1, global_seeding_changes=1,
+                 transfer_rate=0.15, *args, **kwargs):
         """Initialize ForestOptimizationAlgorithm.
 
         Args:
